@@ -32,8 +32,8 @@
 <body class="bg-white text-olive">
 
     <!-- Barre d'annonce -->
-    <div class="bg-olive text-white py-2 text-center text-sm">
-        <p>🌿 Livraison gratuite dès 50€ d'achat | Ouvert du lundi au samedi</p>
+    <div class="bg-yellow text-white py-2 text-center text-sm">
+        <p>🌿 <b>Annonce</b> | Porte ouverte le jeudi 23 octobre 2025 de 9h00 à 12h00</p>
     </div>
 
     <!-- Navigation -->
