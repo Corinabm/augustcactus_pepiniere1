@@ -11,7 +11,7 @@ class PageController extends Controller
      */
     public function accueil()
     {
-        return view('pages.accueil');
+        return view('layouts.accueil');
     }
 
     /**
@@ -19,7 +19,7 @@ class PageController extends Controller
      */
     public function services()
     {
-        return view('pages.services');
+        return view('layouts.services');
     }
 
     /**
@@ -27,7 +27,7 @@ class PageController extends Controller
      */
     public function galerie()
     {
-        return view('pages.galerie');
+        return view('layouts.galerie');
     }
 
     /**
@@ -35,7 +35,7 @@ class PageController extends Controller
      */
     public function nosPlantes()
     {
-        return view('pages.nos-plantes');
+        return view('layouts.nos-plantes');
     }
 
     /**
@@ -43,7 +43,7 @@ class PageController extends Controller
      */
     public function aPropos()
     {
-        return view('pages.a-propos');
+        return view('layouts.a-propos');
     }
 
     /**
@@ -51,6 +51,6 @@ class PageController extends Controller
      */
     public function contact()
     {
-        return view('pages.contact');
+        return view('layouts.contact');
     }
 }
