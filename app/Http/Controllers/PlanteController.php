@@ -36,7 +36,7 @@ class PlanteController extends Controller
 
         $plantes = $query->paginate(12);
 
-        return view('pages.plantes.index', compact('plantes'));
+        return view('layouts.plantes.index', compact('plantes'));
     }
 
     /**
@@ -46,6 +46,6 @@ class PlanteController extends Controller
     {
         $plante->load(['categorie', 'photos']);
 
-        return view('pages.plantes.show', compact('plante'));
+        return view('layouts.plantes.show', compact('plante'));
     }
 }
