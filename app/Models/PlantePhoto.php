@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Plante;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class PlantePhoto extends Model
 {

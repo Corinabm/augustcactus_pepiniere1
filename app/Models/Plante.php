@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Demande;
+use App\Models\Categorie;
+use App\Models\PlantePhoto;
 use Illuminate\Database\Eloquent\Model;
 
 class Plante extends Model
