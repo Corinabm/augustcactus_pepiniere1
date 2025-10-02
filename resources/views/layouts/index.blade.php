@@ -1,62 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>August Cactus - Pépinière</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-        }
-    </style>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        olive: '#0A2D19',
-                        yellow: '#FFC125',
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-white text-olive">
+@extends('layouts.app')
 
-    <!-- Barre d'annonce -->
-    <div class="bg-yellow text-white py-2 text-center text-sm">
-        <p>🌿 <b>Annonce</b> | Porte ouverte le jeudi 23 octobre 2025 de 9h00 à 12h00</p>
-    </div>
+@section('title', 'Accueil - August Cactus')
 
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold text-olive">August Cactus</h1>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="text-olive hover:text-yellow font-semibold">Accueil</a>
-                    <a href="#" class="text-olive hover:text-yellow">Catalogue</a>
-                    <a href="#" class="text-olive hover:text-yellow">Services</a>
-                    <a href="#" class="text-olive hover:text-yellow">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+@section('content')
 
     <!-- Bannière Héros -->
-    <section class="relative bg-gradient-to-r from-olive to-green-900 text-white py-32">
-        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section class="relative bg-gradient-to-r from-olive to-green-900 text-white min-h-screen flex items-center">
+        <!-- Image de background -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style="background-image: url('{{ asset('images/hero-background.jpg') }}');"></div>
+        <!-- Overlay sombre pour améliorer la lisibilité du texte -->
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="text-center">
                 <h2 class="text-5xl md:text-6xl font-bold mb-6">Cultivez Votre Paradis Vert</h2>
                 <p class="text-xl md:text-2xl mb-8 text-gray-200">Plus de 680 variétés de plantes pour embellir votre quotidien</p>
@@ -210,6 +164,20 @@
         </div>
     </section>
 
+    <!-- Section Certification -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12 text-olive">Certification</h2>
+            <div class="flex justify-center">
+                <div class="w-64 h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <svg class="w-32 h-32 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section Localisation -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -271,48 +239,4 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-olive text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-xl font-bold mb-4">August Cactus</h4>
-                    <p class="text-gray-300">Votre pépinière de confiance depuis 30 ans</p>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Navigation</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-yellow">Accueil</a></li>
-                        <li><a href="#" class="hover:text-yellow">Catalogue</a></li>
-                        <li><a href="#" class="hover:text-yellow">Services</a></li>
-                        <li><a href="#" class="hover:text-yellow">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Informations</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-yellow">À propos</a></li>
-                        <li><a href="#" class="hover:text-yellow">CGV</a></li>
-                        <li><a href="#" class="hover:text-yellow">Mentions légales</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Suivez-nous</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-yellow">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
-                        <a href="#" class="hover:text-yellow">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 August Cactus. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+@endsection

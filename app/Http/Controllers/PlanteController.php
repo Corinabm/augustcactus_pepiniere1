@@ -10,7 +10,7 @@ class PlanteController extends Controller
     /**
      * Afficher la liste des plantes actives avec filtres
      */
-    public function index(Request $request)
+    public function catalogue(Request $request)
     {
         $query = Plante::where('est_actif', true)
                        ->with('categorie');
@@ -36,7 +36,7 @@ class PlanteController extends Controller
 
         $plantes = $query->paginate(12);
 
-        return view('layouts.plantes.index', compact('plantes'));
+        return view('layouts.plantes.catalogue', compact('plantes'));
     }
 
     /**

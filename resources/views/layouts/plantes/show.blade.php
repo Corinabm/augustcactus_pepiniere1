@@ -1,13 +1,12 @@
-<x-layouts.app title="{{ $plante->nom_commun }} - Fiche Produit">
-    <x-navigation />
+@extends('layouts.app')
+
+@section('title', $plante->nom_commun . ' - Fiche Produit')
+
+@section('content')
+    <!-- Espacement pour la navbar fixe -->
+    <div class="pt-24"></div>
 
     <main class="container mx-auto px-4 py-8">
-        <x-breadcrumb :links="[
-            ['url' => '/', 'label' => 'Accueil'], 
-            ['url' => route('plantes.index'), 'label' => 'Nos Plantes'],
-            ['url' => route('plantes.show', $plante), 'label' => $plante->nom_commun]
-        ]" />
-
         <div class="bg-white rounded-xl shadow-2xl p-6 lg:p-12 mt-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <section>
@@ -30,41 +29,41 @@
                 </section>
 
                 <section class="space-y-6">
-                    <h1 class="text-4xl font-title text-green-800">{{ $plante->nom_commun }}</h1>
-                    <p class="text-xl font-body italic text-gray-500 mb-4">{{ $plante->nom_scientifique }}</p>
+                    <h1 class="text-4xl font-bold text-olive">{{ $plante->nom_commun }}</h1>
+                    <p class="text-xl italic text-gray-500 mb-4">{{ $plante->nom_scientifique }}</p>
 
                     <div class="flex items-baseline justify-between border-b pb-4">
-                        <span class="text-3xl font-bold text-yellow-600">{{ number_format($plante->prix, 2, ',', ' ') }} €</span>
+                        <span class="text-3xl font-bold text-yellow">{{ number_format($plante->prix, 2, ',', ' ') }} €</span>
                         <span class="text-lg text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
                             {{ $plante->categorie->nom }}
                         </span>
                     </div>
-                    
-                    <h2 class="text-2xl font-title text-green-800 pt-4">Description</h2>
+
+                    <h2 class="text-2xl font-bold text-olive pt-4">Description</h2>
                     <p class="text-gray-700 leading-relaxed">{{ $plante->description }}</p>
 
-                    <h2 class="text-2xl font-title text-green-800 pt-4 border-t mt-6">Guide d'Entretien</h2>
+                    <h2 class="text-2xl font-bold text-olive pt-4 border-t mt-6">Guide d'Entretien</h2>
                     <div class="grid grid-cols-3 gap-4 text-center text-sm">
-                        <div class="p-3 bg-green-50 rounded-lg">
-                            <i class="fas fa-seedling text-2xl text-green-700"></i>
-                            <p class="mt-1 font-bold">Taille</p>
+                        <div class="p-3 bg-olive/5 rounded-lg">
+                            <span class="text-2xl">🌱</span>
+                            <p class="mt-1 font-bold text-olive">Taille</p>
                             <p class="text-gray-600">{{ ucfirst($plante->taille) }}</p>
                         </div>
-                        <div class="p-3 bg-green-50 rounded-lg">
-                            <i class="fas fa-sun text-2xl text-green-700"></i>
-                            <p class="mt-1 font-bold">Exposition</p>
+                        <div class="p-3 bg-olive/5 rounded-lg">
+                            <span class="text-2xl">🌞</span>
+                            <p class="mt-1 font-bold text-olive">Exposition</p>
                             <p class="text-gray-600">{{ ucfirst($plante->exposition) }}</p>
                         </div>
-                        <div class="p-3 bg-green-50 rounded-lg">
-                            <i class="fas fa-tint text-2xl text-green-700"></i>
-                            <p class="mt-1 font-bold">Arrosage</p>
+                        <div class="p-3 bg-olive/5 rounded-lg">
+                            <span class="text-2xl">💧</span>
+                            <p class="mt-1 font-bold text-olive">Arrosage</p>
                             <p class="text-gray-600">{{ ucfirst($plante->arrosage) }}</p>
                         </div>
                     </div>
 
                     @if ($plante->stock > 0)
                         <div class="text-green-600 font-bold">En Stock ({{ $plante->stock }} unités disponibles)</div>
-                        <a href="{{ route('plantes.demande.create', $plante) }}" class="block w-full text-center py-4 text-xl bg-yellow-500 text-green-800 font-extrabold rounded-lg hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+                        <a href="{{ route('contact') }}" class="block w-full text-center py-4 text-xl bg-yellow text-olive font-extrabold rounded-lg hover:bg-yellow/90 transition duration-300 transform hover:scale-105">
                             Faire une demande de devis
                         </a>
                     @else
@@ -77,6 +76,4 @@
             </div>
         </div>
     </main>
-
-    <x-footer />
-</x-layouts.app>
+@endsection

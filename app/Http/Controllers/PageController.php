@@ -9,9 +9,9 @@ class PageController extends Controller
     /**
      * Page d'accueil
      */
-    public function accueil()
+    public function index()
     {
-        return view('layouts.accueil');
+        return view('layouts.index');
     }
 
     /**
@@ -35,7 +35,7 @@ class PageController extends Controller
      */
     public function nosPlantes()
     {
-        return view('layouts.nos-plantes');
+        return view('plantes.catalogue');
     }
 
     /**
