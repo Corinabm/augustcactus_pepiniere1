@@ -5,16 +5,16 @@
 @section('content')
 
     <!-- Bannière Héros -->
-    <section class="relative bg-gradient-to-r from-olive to-green-900 text-white min-h-screen flex items-center">
+    <section class="relative min-h-screen flex items-center">
         <!-- Image de background -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40" style="background-image: url('{{ asset('images/hero-background.jpg') }}');"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('images/hero-background.jpg') }}');"></div>
         <!-- Overlay sombre pour améliorer la lisibilité du texte -->
         <div class="absolute inset-0 bg-black/30"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="text-center">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">Cultivez Votre Paradis Vert</h2>
-                <p class="text-xl md:text-2xl mb-8 text-gray-200">Plus de 680 variétés de plantes pour embellir votre quotidien</p>
-                <a href="#catalogue" class="inline-block bg-yellow text-olive px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition duration-300 shadow-lg">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 text-black">Découvrez notre univers fascinant de plantes et cactus</h2>
+                <p class="text-xl md:text-2xl mb-8 text-black">Plantes vertes et fleuries, cactus, succulentes et autres</p>
+                <a href="{{ route('plantes.catalogue') }}" class="inline-block bg-yellow text-olive px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition duration-300 shadow-lg">
                     Découvrir nos plantes
                 </a>
             </div>
@@ -27,37 +27,37 @@
             <h2 class="text-4xl font-bold text-center mb-12 text-olive">Nos Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-yellow rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                        </svg>
+                <a href="{{ route('services') }}#amenagement" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden">
+                        <img src="{{ asset('images/service-amenagement.jpg') }}" alt="Aménagement Paysager" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-olive">Aménagement Paysager</h3>
-                    <p class="text-gray-600">Créez des espaces verts uniques avec nos experts en aménagement extérieur.</p>
-                </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-olive">Aménagement Paysager</h3>
+                        <p class="text-gray-600">Créez des espaces verts uniques avec nos experts en aménagement extérieur.</p>
+                    </div>
+                </a>
 
                 <!-- Service 2 -->
-                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-yellow rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-                        </svg>
+                <a href="{{ route('services') }}#location" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden">
+                        <img src="{{ asset('images/service-location.jpg') }}" alt="Location de Plantes" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-olive">Location de Plantes</h3>
-                    <p class="text-gray-600">Louez des plantes pour vos événements professionnels ou personnels.</p>
-                </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-olive">Location de Plantes</h3>
+                        <p class="text-gray-600">Louez des plantes pour vos événements professionnels ou personnels.</p>
+                    </div>
+                </a>
 
                 <!-- Service 3 -->
-                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 bg-yellow rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-olive" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                        </svg>
+                <a href="{{ route('services') }}#decoration" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="h-48 overflow-hidden">
+                        <img src="{{ asset('images/service-decoration.jpg') }}" alt="Décoration Végétale" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-olive">Décoration Végétale</h3>
-                    <p class="text-gray-600">Sublimez vos intérieurs avec nos compositions végétales sur mesure.</p>
-                </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-olive">Décoration Végétale</h3>
+                        <p class="text-gray-600">Sublimez vos intérieurs avec nos compositions végétales sur mesure.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -219,7 +219,7 @@
                             </svg>
                             Adresse
                         </h3>
-                        <p class="text-gray-600 ml-9">123 Route de la Pépinière<br>75001 Paris, France</p>
+                        <p class="text-gray-600 ml-9">Chemin Petite Rivière, Rond point de Pelletier<br>97232 Le Lamentin</p>
                     </div>
 
                     <div>
@@ -230,8 +230,8 @@
                             Contact
                         </h3>
                         <div class="space-y-2 text-gray-600 ml-9">
-                            <p><span class="font-semibold">Téléphone :</span> +33 1 23 45 67 89</p>
-                            <p><span class="font-semibold">Email :</span> contact@augustcactus.fr</p>
+                            <p><span class="font-semibold">Téléphone :</span> 0696 80 59 74</p>
+                            <p><span class="font-semibold">Email :</span> augustcactus@gmail.com</p>
                         </div>
                     </div>
                 </div>
