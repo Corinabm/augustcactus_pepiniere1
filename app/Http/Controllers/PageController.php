@@ -31,6 +31,14 @@ class PageController extends Controller
     }
 
     /**
+     * Page location de plantes
+     */
+    public function location()
+    {
+        return view('layouts.location');
+    }
+
+    /**
      * Page galerie
      */
     public function galerie()

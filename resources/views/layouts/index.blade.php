@@ -38,7 +38,7 @@
                 </a>
 
                 <!-- Service 2 -->
-                <a href="{{ route('services') }}#location" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <a href="{{ route('location') }}" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                     <div class="h-48 overflow-hidden">
                         <img src="{{ asset('images/service-location.jpg') }}" alt="Location de Plantes" class="w-full h-full object-cover">
                     </div>

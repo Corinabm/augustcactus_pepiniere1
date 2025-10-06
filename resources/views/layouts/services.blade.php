@@ -40,7 +40,7 @@
                     <p class="text-gray-600 mb-4 flex-grow">
                         Besoin de végétaux pour un événement ou pour dynamiser temporairement vos espaces ? Nous proposons un service de location de plantes flexible et pratique pour tous vos besoins ponctuels.
                     </p>
-                    <a href="{{ route('contact') }}" class="inline-block bg-yellow text-olive px-5 py-2 font-semibold hover:bg-yellow/90 transition-colors duration-300 rounded-lg text-sm mx-auto">
+                    <a href="{{ route('location') }}" class="inline-block bg-yellow text-olive px-5 py-2 font-semibold hover:bg-yellow/90 transition-colors duration-300 rounded-lg text-sm mx-auto">
                         En savoir plus
                     </a>
                 </div>
