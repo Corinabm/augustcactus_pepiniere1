@@ -10,6 +10,8 @@ Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/galerie', [PageController::class, 'galerie'])->name('galerie');
 Route::get('/a-propos', [PageController::class, 'aPropos'])->name('a-propos');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+// Route POST pour traiter le formulaire de contact avec validation et anti-spam
+Route::post('/contact', [PageController::class, 'submitContact'])->name('contact.submit');
 
 // Routes PlanteController
 Route::get('/nos-plantes', [PlanteController::class, 'catalogue'])->name('plantes.catalogue');
