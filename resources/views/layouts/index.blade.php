@@ -27,7 +27,7 @@
             <h2 class="text-4xl font-bold text-center mb-12 text-olive">Nos Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <a href="{{ route('services') }}#amenagement" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <a href="{{ route('amenagement') }}" class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                     <div class="h-48 overflow-hidden">
                         <img src="{{ asset('images/service-amenagement.jpg') }}" alt="Aménagement Paysager" class="w-full h-full object-cover">
                     </div>

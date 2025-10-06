@@ -23,6 +23,14 @@ class PageController extends Controller
     }
 
     /**
+     * Page aménagement paysager
+     */
+    public function amenagement()
+    {
+        return view('layouts.amenagement');
+    }
+
+    /**
      * Page galerie
      */
     public function galerie()

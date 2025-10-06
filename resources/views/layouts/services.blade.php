@@ -26,7 +26,7 @@
                     <p class="text-gray-600 mb-4 flex-grow">
                         Transformez vos espaces extérieurs en véritables havres de paix. Notre équipe d'experts conçoit et réalise des aménagements paysagers sur mesure, adaptés à vos envies et à votre budget.
                     </p>
-                    <a href="{{ route('contact') }}" class="inline-block bg-yellow text-olive px-5 py-2 font-semibold hover:bg-yellow/90 transition-colors duration-300 rounded-lg text-sm mx-auto">
+                    <a href="{{ route('amenagement') }}" class="inline-block bg-yellow text-olive px-5 py-2 font-semibold hover:bg-yellow/90 transition-colors duration-300 rounded-lg text-sm mx-auto">
                         En savoir plus
                     </a>
                 </div>
