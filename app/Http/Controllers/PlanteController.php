@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class PlanteController extends Controller
 {
     /**
-     * Afficher la liste des plantes actives avec filtres
+     * Afficher la liste des plantes actives avec filtres et tri
      */
     public function catalogue(Request $request)
     {
+        // Requête de base : plantes actives avec leur catégorie
         $query = Plante::where('est_actif', true)
                        ->with('categorie');
 
@@ -25,15 +26,38 @@ class PlanteController extends Controller
             $query->where('exposition', $request->exposition);
         }
 
-        // Tri par prix
-        if ($request->filled('prix')) {
-            if ($request->prix === 'asc') {
+        // Gestion du paramètre 'filter' pour tri et filtrage par catégorie
+        if ($request->filled('filter')) {
+            $filter = $request->filter;
+
+            // --- TRI PAR PRIX ---
+            if ($filter === 'prix_asc') {
+                // Tri par prix croissant (du moins cher au plus cher)
                 $query->orderBy('prix', 'asc');
-            } elseif ($request->prix === 'desc') {
+            } elseif ($filter === 'prix_desc') {
+                // Tri par prix décroissant (du plus cher au moins cher)
                 $query->orderBy('prix', 'desc');
+            }
+            // --- FILTRAGE PAR CATÉGORIE ---
+            elseif ($filter === 'plantes_interieur') {
+                // Filtre : Plantes d'intérieur vertes
+                $query->whereHas('categorie', function($q) {
+                    $q->where('nom', 'Plantes d\'intérieur vertes');
+                });
+            } elseif ($filter === 'cactus_succulentes') {
+                // Filtre : Cactus & Succulentes
+                $query->whereHas('categorie', function($q) {
+                    $q->where('nom', 'Cactus & Succulentes');
+                });
+            } elseif ($filter === 'plantes_fleuries') {
+                // Filtre : Plantes Fleuries
+                $query->whereHas('categorie', function($q) {
+                    $q->where('nom', 'Plantes Fleuries');
+                });
             }
         }
 
+        // Pagination : 12 plantes par page
         $plantes = $query->paginate(12);
 
         return view('layouts.plantes.catalogue', compact('plantes'));

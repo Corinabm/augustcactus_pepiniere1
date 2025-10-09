@@ -6,91 +6,89 @@
     <!-- Espacement pour la navbar fixe -->
     <div class="pt-24"></div>
 
-    <main class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-olive mb-8">Notre Catalogue Végétal</h1>
+    <main class="bg-white min-h-screen">
+        <!-- Conteneur avec marges latérales généreuses -->
+        <div class="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 pt-20 pb-12">
 
-        <div class="flex flex-col lg:flex-row gap-8">
-            <aside class="lg:w-1/4 p-4 bg-gray-50 rounded-lg shadow-md h-fit sticky top-24">
-                <h2 class="text-2xl font-bold text-olive mb-4 border-b pb-2">Filtrer</h2>
-
-                <form action="{{ route('plantes.catalogue') }}" method="GET" class="space-y-6">
-                    <div class="space-y-2">
-                        <label for="exposition" class="font-bold text-olive">Exposition</label>
-                        <select name="exposition" id="exposition" class="w-full border-gray-300 rounded-md shadow-sm focus:border-yellow focus:ring-yellow">
-                            <option value="">Toutes</option>
-                            <option value="soleil" {{ request('exposition') == 'soleil' ? 'selected' : '' }}>Plein Soleil</option>
-                            <option value="mi-ombre" {{ request('exposition') == 'mi-ombre' ? 'selected' : '' }}>Mi-Ombre</option>
-                            <option value="ombre" {{ request('exposition') == 'ombre' ? 'selected' : '' }}>Ombre</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label for="arrosage" class="font-bold text-olive">Arrosage</label>
-                        <select name="arrosage" id="arrosage" class="w-full border-gray-300 rounded-md shadow-sm focus:border-yellow focus:ring-yellow">
-                            <option value="">Tous</option>
-                            <option value="faible" {{ request('arrosage') == 'faible' ? 'selected' : '' }}>Faible</option>
-                            <option value="modere" {{ request('arrosage') == 'modere' ? 'selected' : '' }}>Modéré</option>
-                            <option value="regulier" {{ request('arrosage') == 'regulier' ? 'selected' : '' }}>Régulier</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label for="prix" class="font-bold text-olive">Trier par Prix</label>
-                        <select name="prix" id="prix" class="w-full border-gray-300 rounded-md shadow-sm focus:border-yellow focus:ring-yellow">
-                            <option value="">Pertinence</option>
-                            <option value="asc" {{ request('prix') == 'asc' ? 'selected' : '' }}>Prix Croissant</option>
-                            <option value="desc" {{ request('prix') == 'desc' ? 'selected' : '' }}>Prix Décroissant</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="w-full py-2 bg-yellow text-olive font-bold rounded-md hover:bg-yellow/90 transition duration-150">
-                        Appliquer les filtres
-                    </button>
-
-                    @if (request()->hasAny(['exposition', 'arrosage', 'prix']))
-                        <a href="{{ route('plantes.catalogue') }}" class="block text-center text-sm text-gray-500 hover:text-olive mt-2">Réinitialiser les filtres</a>
-                    @endif
-                </form>
-            </aside>
-
-            <section class="lg:w-3/4">
-                @if ($plantes->isEmpty())
-                    <p class="text-xl text-gray-600 p-8 bg-white rounded-lg shadow-md">
-                        Aucune plante ne correspond à vos critères de recherche. Essayez de réinitialiser les filtres.
+            <!-- En-tête de la page -->
+            <div class="mb-16 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6" style="font-family: 'Playfair Display', serif;">
+                        Notre collection de plantes
+                    </h1>
+                    <p class="text-base md:text-lg text-[#242424] leading-relaxed" style="font-family: 'Source Sans Pro', sans-serif;">
+                        Des variétés soigneusement choisies pour embellir votre espace et leur facilité d'entretien.
                     </p>
-                @else
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach ($plantes as $plante)
-                            <a href="{{ route('plantes.show', $plante) }}" class="block bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-xl transform hover:-translate-y-1 group">
-                                <div class="relative h-64 overflow-hidden">
-                                    {{-- Affichage de la photo principale, utilise l'accesseur du modèle --}}
-                                    <img src="{{ $plante->photo_principale_url ?? asset('images/placeholder-plante.jpg') }}"
-                                         alt="{{ $plante->nom_commun }}"
-                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                                <div class="p-4">
-                                    <span class="text-sm text-gray-500">{{ $plante->categorie->nom }}</span>
-                                    <h3 class="text-2xl font-bold text-olive mt-1 truncate">{{ $plante->nom_commun }}</h3>
-                                    <p class="text-lg font-bold text-yellow mt-2">{{ number_format($plante->prix, 2, ',', ' ') }} €</p>
-                                    <div class="mt-4 flex justify-between items-center text-sm">
-                                        <span class="text-gray-600 flex items-center">
-                                            🌞 {{ ucfirst($plante->exposition) }}
-                                        </span>
-                                        <span class="text-gray-600 flex items-center">
-                                            💧 {{ ucfirst($plante->arrosage) }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                    
-                    {{-- Pagination Tailwind --}}
-                    <div class="mt-8">
-                        {{ $plantes->links() }}
-                    </div>
-                @endif
-            </section>
+                </div>
+            </div>
+
+            <!-- Outil de tri et filtrage -->
+            {{-- Formulaire : soumet automatiquement via GET quand l'utilisateur change la sélection --}}
+            <div class="mb-12 flex justify-end">
+                <form method="GET" action="{{ route('plantes.catalogue') }}" id="filterForm">
+                    <select
+                        name="filter"
+                        class="border border-black bg-transparent px-4 py-2 text-black focus:outline-none focus:ring-1 focus:ring-black"
+                        style="font-family: 'Source Sans Pro', sans-serif;"
+                        onchange="this.form.submit()">
+                        {{-- Option par défaut (afficher tout) --}}
+                        <option value="">Trier par</option>
+
+                        {{-- Options de tri --}}
+                        <option value="prix_asc" {{ request('filter') == 'prix_asc' ? 'selected' : '' }}>Prix (croissant)</option>
+                        <option value="prix_desc" {{ request('filter') == 'prix_desc' ? 'selected' : '' }}>Prix (décroissant)</option>
+
+                        {{-- Options de filtrage par catégorie --}}
+                        <option value="plantes_interieur" {{ request('filter') == 'plantes_interieur' ? 'selected' : '' }}>Plantes d'intérieur vertes</option>
+                        <option value="cactus_succulentes" {{ request('filter') == 'cactus_succulentes' ? 'selected' : '' }}>Cactus & Succulentes</option>
+                        <option value="plantes_fleuries" {{ request('filter') == 'plantes_fleuries' ? 'selected' : '' }}>Plantes Fleuries</option>
+                    </select>
+                </form>
+            </div>
+
+            @if ($plantes->isEmpty())
+                <p class="text-xl text-[#242424] p-12 bg-white text-center" style="font-family: 'Source Sans Pro', sans-serif;">
+                    Aucune plante disponible pour le moment.
+                </p>
+            @else
+                <!-- Grille des produits - 3 colonnes desktop -->
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-16">
+                    @foreach ($plantes as $plante)
+                        <a href="{{ route('plantes.show', $plante) }}" class="group block bg-[#FAFAFA] overflow-hidden">
+                            <!-- Image produit -->
+                            <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+                                <img src="{{ $plante->photo_principale_url ?? asset('images/placeholder-plante.jpg') }}"
+                                     alt="{{ $plante->nom_commun }}"
+                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102">
+                            </div>
+
+                            <!-- Informations produit avec espace blanc généreux -->
+                            <div class="p-6 md:p-8 space-y-3">
+                                <!-- Catégorie -->
+                                <p class="text-medium font-serif text-olive" style="font-family: 'Source Sans Pro', sans-serif;">
+                                    {{ $plante->categorie->nom }}
+                                </p>
+
+                                <!-- Nom du produit -->
+                                <h3 class="text-xl md:text-2xl font-normal text-black leading-tight" style="font-family: 'Playfair Display', serif;">
+                                    {{ $plante->nom_commun }}
+                                </h3>
+
+                                <!-- Prix -->
+                                <p class="text-lg md:text-xl font-semibold text-black pt-2" style="font-family: 'Source Sans Pro', sans-serif;">
+                                    {{ number_format($plante->prix, 2, ',', ' ') }} €
+                                </p>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+                <!-- Pagination -->
+                {{-- La méthode appends() ajoute le paramètre 'filter' à tous les liens de pagination --}}
+                <div class="mt-12">
+                    {{ $plantes->appends(['filter' => request('filter')])->links() }}
+                </div>
+            @endif
         </div>
     </main>
 @endsection

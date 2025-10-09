@@ -15,6 +15,10 @@ class PlantesTable
     {
         return $table
             ->columns([
+                TextColumn::make('id')
+                    ->label('ID')
+                    ->sortable()
+                    ->searchable(),
                 TextColumn::make('categorie_id')
                     ->numeric()
                     ->sortable(),
