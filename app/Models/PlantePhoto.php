@@ -6,6 +6,9 @@ use App\Models\Plante;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * @property string|null $url
+ */
 class PlantePhoto extends Model
 {
     /**
@@ -71,12 +74,15 @@ class PlantePhoto extends Model
             return null;
         }
 
+        /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
+        $storage = Storage::disk('public');
+
         // Si le chemin contient déjà "plantes/", utiliser tel quel
         if (str_starts_with($this->photo_url, 'plantes/')) {
-            return Storage::disk('public')->url($this->photo_url);
+            return $storage->url($this->photo_url);
         }
 
         // Sinon, c'est une ancienne image dans plantes/ directement
-        return Storage::disk('public')->url('plantes/' . $this->photo_url);
+        return $storage->url('plantes/' . $this->photo_url);
     }
 }
