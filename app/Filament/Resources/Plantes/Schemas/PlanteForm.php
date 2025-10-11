@@ -56,7 +56,7 @@ class PlanteForm
                         FileUpload::make('photo_url')
                             ->label('Photo')
                             ->image()
-                            ->directory('plantes')
+                            ->directory('plantes/photos')
                             ->disk('public')
                             ->maxSize(2048)
                             ->required(),

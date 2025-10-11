@@ -66,8 +66,11 @@ class Plante extends Model
      */
     public function getPhotoPrincipaleUrlAttribute()
     {
-        return $this->photoPrincipale 
-            ? $this->photoPrincipale->url 
-            : asset('images/placeholder-plante.jpg');
+        if (!$this->photoPrincipale) {
+            return asset('images/placeholder-plante.jpg');
+        }
+
+        // Utiliser l'accessor "url" de PlantePhoto qui gère les anciens et nouveaux chemins
+        return $this->photoPrincipale->url;
     }
 }

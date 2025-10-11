@@ -63,9 +63,20 @@ class PlantePhoto extends Model
 
     /**
      * Accessor : URL complète de l'image
+     * Gère les anciens chemins (juste le nom du fichier) et les nouveaux (plantes/photos/...)
      */
     public function getUrlAttribute()
     {
-        return Storage::url($this->photo_url);
+        if (!$this->photo_url) {
+            return null;
+        }
+
+        // Si le chemin contient déjà "plantes/", utiliser tel quel
+        if (str_starts_with($this->photo_url, 'plantes/')) {
+            return Storage::disk('public')->url($this->photo_url);
+        }
+
+        // Sinon, c'est une ancienne image dans plantes/ directement
+        return Storage::disk('public')->url('plantes/' . $this->photo_url);
     }
 }

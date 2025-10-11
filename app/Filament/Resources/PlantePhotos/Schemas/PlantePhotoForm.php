@@ -21,6 +21,7 @@ class PlantePhotoForm
                     ->preload(),
                 FileUpload::make('photo_url')
                     ->image()
+                    ->disk('public')
                     ->directory('plantes/photos')
                     ->required()
                     ->maxSize(2048)
