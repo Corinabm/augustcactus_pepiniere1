@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Nos Plantes - Catalogue')
+@section('title', $titre . ' - August Cactus')
 
 @section('content')
     <!-- Espacement pour la navbar fixe -->
@@ -14,36 +14,12 @@
             <div class="mb-16 text-center">
                 <div class="max-w-2xl mx-auto">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6" style="font-family: 'Playfair Display', serif;">
-                        Notre collection de plantes
+                        {{ $titre }}
                     </h1>
                     <p class="text-base md:text-lg text-[#242424] leading-relaxed" style="font-family: 'Source Sans Pro', sans-serif;">
-                        Des variétés soigneusement choisies pour embellir votre espace et leur facilité d'entretien.
+                        {{ $sousTitre }}
                     </p>
                 </div>
-            </div>
-
-            <!-- Outil de tri et filtrage -->
-            {{-- Formulaire : soumet automatiquement via GET quand l'utilisateur change la sélection --}}
-            <div class="mb-12 flex justify-end">
-                <form method="GET" action="{{ route('plantes.catalogue') }}" id="filterForm">
-                    <select
-                        name="filter"
-                        class="border border-black bg-transparent px-4 py-2 text-black focus:outline-none focus:ring-1 focus:ring-black"
-                        style="font-family: 'Source Sans Pro', sans-serif;"
-                        onchange="this.form.submit()">
-                        {{-- Option par défaut (afficher tout) --}}
-                        <option value="">Trier par</option>
-
-                        {{-- Options de tri --}}
-                        <option value="prix_asc" {{ request('filter') == 'prix_asc' ? 'selected' : '' }}>Prix (croissant)</option>
-                        <option value="prix_desc" {{ request('filter') == 'prix_desc' ? 'selected' : '' }}>Prix (décroissant)</option>
-
-                        {{-- Options de filtrage par catégorie --}}
-                        <option value="plantes_interieur" {{ request('filter') == 'plantes_interieur' ? 'selected' : '' }}>Plantes d'intérieur vertes</option>
-                        <option value="cactus_succulentes" {{ request('filter') == 'cactus_succulentes' ? 'selected' : '' }}>Cactus & Succulentes</option>
-                        <option value="plantes_fleuries" {{ request('filter') == 'plantes_fleuries' ? 'selected' : '' }}>Plantes Fleuries</option>
-                    </select>
-                </form>
             </div>
 
             @if ($plantes->isEmpty())
@@ -59,6 +35,7 @@
                             <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden">
                                 <img src="{{ $plante->photo_principale_url ?? asset('images/placeholder-plante.jpg') }}"
                                      alt="{{ $plante->nom_commun }}"
+                                     loading="lazy"
                                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102">
                             </div>
 
@@ -75,7 +52,7 @@
                                 </h3>
 
                                 <!-- Prix -->
-                                <p class="text-lg md:text-xl font-semibold text-black pt-2" style="font-family: 'Source Sans Pro', sans-serif;">
+                                <p class="text-lg md:text-xl font-semibold text-black" style="font-family: 'Source Sans Pro', sans-serif;">
                                     {{ number_format($plante->prix, 2, ',', ' ') }} €
                                 </p>
                             </div>
@@ -84,9 +61,9 @@
                 </div>
 
                 <!-- Pagination -->
-                {{-- La méthode appends() ajoute le paramètre 'filter' à tous les liens de pagination --}}
+                {{-- La méthode appends() ajoute le paramètre 'categorie' à tous les liens de pagination --}}
                 <div class="mt-12">
-                    {{ $plantes->appends(['filter' => request('filter')])->links() }}
+                    {{ $plantes->appends(['categorie' => request('categorie')])->links() }}
                 </div>
             @endif
         </div>

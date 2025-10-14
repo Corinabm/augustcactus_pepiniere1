@@ -24,6 +24,8 @@
                 <span class="mx-1.5 md:mx-2 text-gray-400">/</span>
                 <a href="{{ route('plantes.catalogue') }}" class="text-gray-500 hover:text-black">Nos plantes</a>
                 <span class="mx-1.5 md:mx-2 text-gray-400">/</span>
+                <a href="{{ route('plantes.catalogue') }}?categorie={{ strtolower($plante->categorie->nom) }}" class="text-gray-500 hover:text-black">{{ $plante->categorie->nom }}</a>
+                <span class="mx-1.5 md:mx-2 text-gray-400">/</span>
                 <span class="text-black">{{ $plante->nom_commun }}</span>
             </nav>
 
@@ -47,9 +49,10 @@
                             <div id="mobileGallery" class="flex overflow-x-auto snap-x snap-mandatory -mb-4 pb-4" style="scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;">
                                 @foreach($allImages as $index => $imageUrl)
                                     <div class="flex-shrink-0 w-full snap-center">
-                                        <div class="relative bg-[#FAFAFA] overflow-hidden aspect-square">
+                                        <div class="relative bg-[#FAFAFA] overflow-hidden aspect-[4/5]">
                                             <img src="{{ $imageUrl }}"
                                                  alt="{{ $plante->nom_commun }}"
+                                                 loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
                                                  class="w-full h-full object-cover">
                                         </div>
                                     </div>
@@ -72,11 +75,11 @@
 
                     <!-- Image principale Desktop - visible uniquement sur grand écran -->
                     <div class="hidden lg:block flex-1 order-1 lg:order-2">
-                        <div class="relative bg-[#FAFAFA] overflow-hidden aspect-square">
+                        <div class="relative bg-[#FAFAFA] overflow-hidden aspect-[4/5]">
                             <img id="mainImage"
                                  src="{{ $plante->photo_principale_url ?? asset('images/placeholder-plante.jpg') }}"
                                  alt="{{ $plante->nom_commun }}"
-                                 class="w-full h-full object-cover cursor-zoom-in">
+                                 class="w-full h-full object-cover">
                         </div>
                     </div>
 
@@ -88,6 +91,7 @@
                                      onclick="changeImage('{{ $imageUrl }}', this)">
                                     <img src="{{ $imageUrl }}"
                                          alt="Vue {{ $plante->nom_commun }}"
+                                         loading="lazy"
                                          class="w-full h-full object-cover">
                                 </div>
                             @endforeach
@@ -96,7 +100,7 @@
                 </div>
 
                 <!-- Informations produit (droite) -->
-                <div class="flex flex-col justify-between h-full">
+                <div class="flex flex-col">
                     <!-- Informations du haut -->
                     <div class="space-y-4 lg:space-y-6">
                         <!-- Catégorie -->
@@ -121,6 +125,13 @@
                             </span>
                         </div>
 
+                        <!-- Description courte -->
+                        <div class="mb-6">
+                            <p class="text-gray-700 leading-relaxed text-sm md:text-base" style="font-family: 'Source Sans Pro', sans-serif;">
+                                {{ Str::limit($plante->description, 150) }}
+                            </p>
+                        </div>
+
                         <!-- Caractéristiques détaillées -->
                         <div class="bg-[#FAFAFA] rounded-lg p-4 lg:p-6">
                             <h3 class="text-base md:text-lg font-bold text-black mb-4" style="font-family: 'Playfair Display', serif;">
@@ -140,51 +151,11 @@
                                     <p class="font-semibold text-black text-sm">{{ ucfirst($plante->arrosage) }}</p>
                                 </div>
                                 <div class="space-y-1">
-                                    <p class="text-xs text-gray-500">Catégorie</p>
-                                    <p class="font-semibold text-black text-sm">{{ $plante->categorie->nom }}</p>
+                                    <p class="text-xs text-gray-500">Disponibilité</p>
+                                    <p class="font-semibold text-black text-sm">{{ $plante->stock > 0 ? 'En stock' : 'Sur demande' }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Sélecteur de quantité et Bouton d'action -->
-                    <div class="flex flex-row gap-3 sm:gap-4 items-center mt-6">
-                        <!-- Sélecteur de quantité -->
-                        <div class="relative inline-flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                            <button onclick="decreaseQuantity()" type="button"
-                                    class="px-3 sm:px-4 py-3 hover:bg-gray-100 transition border-r border-gray-300">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
-                                </svg>
-                            </button>
-                            <input type="text"
-                                   id="quantityInput"
-                                   value="1"
-                                   min="1"
-                                   class="w-16 sm:w-20 text-center py-3 text-sm border-0 focus:outline-none focus:ring-0"
-                                   style="font-family: 'Source Sans Pro', sans-serif;">
-                            <button onclick="increaseQuantity()" type="button"
-                                    class="px-3 sm:px-4 py-3 hover:bg-gray-100 transition border-l border-gray-300">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <!-- Bouton d'action -->
-                        @if($plante->stock > 0)
-                            <a href="{{ route('contact') }}"
-                               class="flex-1 text-center bg-[#0A2D19] text-white py-3 sm:py-4 px-4 sm:px-8 rounded-lg font-bold text-sm sm:text-lg hover:bg-[#0A2D19]/90"
-                               style="font-family: 'Source Sans Pro', sans-serif;">
-                                Je veux cette plante
-                            </a>
-                        @else
-                            <button disabled
-                                    class="flex-1 text-center bg-gray-300 text-gray-500 py-3 sm:py-4 px-4 sm:px-8 rounded-lg font-bold text-sm sm:text-lg cursor-not-allowed"
-                                    style="font-family: 'Source Sans Pro', sans-serif;">
-                                Indisponible
-                            </button>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -204,10 +175,10 @@
                                 class="tab-btn pb-3 lg:pb-4 px-1 border-b-2 font-semibold text-sm whitespace-nowrap transition border-transparent text-gray-500 hover:text-black">
                             Entretien
                         </button>
-                        <button onclick="showTab('livraison')"
-                                id="tab-livraison"
+                        <button onclick="showTab('visite')"
+                                id="tab-visite"
                                 class="tab-btn pb-3 lg:pb-4 px-1 border-b-2 font-semibold text-sm whitespace-nowrap transition border-transparent text-gray-500 hover:text-black">
-                            Livraison
+                            Venir nous voir
                         </button>
                     </nav>
                 </div>
@@ -238,51 +209,43 @@
                         </div>
                     </div>
 
-                    <!-- Livraison -->
-                    <div id="content-livraison" class="tab-content space-y-4" style="display: none;">
-                        <h3 class="text-base md:text-lg font-bold text-black" style="font-family: 'Playfair Display', serif;">Informations de livraison</h3>
-                        <p class="text-gray-700 text-sm md:text-base">Nos plantes sont soigneusement emballées pour garantir leur arrivée en parfait état.</p>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm md:text-base">
-                            <li>Livraison en 3-5 jours ouvrables</li>
-                            <li>Emballage sécurisé et écologique</li>
-                            <li>Suivi de commande disponible</li>
-                            <li>Satisfaction garantie</li>
-                        </ul>
+                    <!-- Venir nous voir -->
+                    <div id="content-visite" class="tab-content space-y-4" style="display: none;">
+                        <h3 class="text-base md:text-lg font-bold text-black" style="font-family: 'Playfair Display', serif;">Venir nous voir</h3>
+                        <p class="text-gray-700 text-sm md:text-base">Venez découvrir cette plante et toute notre collection directement à la pépinière.</p>
+
+                        <div class="bg-[#FAFAFA] rounded-lg p-4 space-y-3">
+                            <div>
+                                <h4 class="font-semibold text-black text-sm md:text-base mb-2">📍 Adresse</h4>
+                                <p class="text-gray-700 text-sm md:text-base">Chemin Petite Rivière, Rond point de Pelletier<br>97232 Le Lamentin</p>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold text-black text-sm md:text-base mb-2">🕒 Horaires d'ouverture</h4>
+                                <p class="text-gray-700 text-sm md:text-base">
+                                    <strong>Lundi - Vendredi :</strong> 9h00 - 12h00<br>
+                                    <strong>Samedi :</strong> 9h00 - 12h00<br>
+                                    <strong>Dimanche :</strong> Fermé
+                                </p>
+                            </div>
+
+                        <p class="text-sm text-gray-600 italic">💡 Conseil : Appelez-nous avant votre visite pour vérifier la disponibilité de cette plante.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Section "Vous aimeriez aussi" -->
-            <div>
+            <div class="pt-12 lg:pt-16">
                 <h2 class="text-2xl md:text-3xl font-bold text-black mb-6 lg:mb-8" style="font-family: 'Playfair Display', serif;">
                     Vous aimeriez aussi
                 </h2>
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-                    @php
-                        // Récupérer 4 plantes de la même catégorie (excluant la plante actuelle)
-                        $plantesLiees = \App\Models\Plante::where('categorie_id', $plante->categorie_id)
-                            ->where('id', '!=', $plante->id)
-                            ->where('est_actif', true)
-                            ->limit(4)
-                            ->get();
-
-                        // Si moins de 4 plantes, compléter avec d'autres plantes
-                        if ($plantesLiees->count() < 4) {
-                            $autresPlantes = \App\Models\Plante::where('categorie_id', '!=', $plante->categorie_id)
-                                ->where('id', '!=', $plante->id)
-                                ->where('est_actif', true)
-                                ->limit(4 - $plantesLiees->count())
-                                ->get();
-
-                            $plantesLiees = $plantesLiees->merge($autresPlantes);
-                        }
-                    @endphp
-
                     @foreach($plantesLiees as $planteLiee)
                         <a href="{{ route('plantes.show', $planteLiee) }}" class="block bg-[#FAFAFA] overflow-hidden">
                             <div class="aspect-square overflow-hidden">
                                 <img src="{{ $planteLiee->photo_principale_url ?? asset('images/placeholder-plante.jpg') }}"
                                      alt="{{ $planteLiee->nom_commun }}"
+                                     loading="lazy"
                                      class="w-full h-full object-cover">
                             </div>
                             <div class="p-3 lg:p-4 space-y-1 lg:space-y-2">
@@ -303,6 +266,16 @@
 
         </div>
     </main>
+
+    <!-- Badge flottant Call-to-Action -->
+    <a href="tel:0696805974"
+       class="fixed bottom-6 right-6 bg-[#0A2D19] text-white px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 hover:bg-[#0A2D19]/90 transition z-50"
+       style="font-family: 'Source Sans Pro', sans-serif;">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        <span class="font-bold">Appeler</span>
+    </a>
 
     <!-- Script JavaScript pur -->
     <script>
@@ -350,21 +323,6 @@
                     }
                 });
             });
-        }
-
-        // Gestion du sélecteur de quantité
-        function decreaseQuantity() {
-            const input = document.getElementById('quantityInput');
-            const currentValue = parseInt(input.value) || 1;
-            if (currentValue > 1) {
-                input.value = currentValue - 1;
-            }
-        }
-
-        function increaseQuantity() {
-            const input = document.getElementById('quantityInput');
-            const currentValue = parseInt(input.value) || 1;
-            input.value = currentValue + 1;
         }
 
         // Gestion des onglets

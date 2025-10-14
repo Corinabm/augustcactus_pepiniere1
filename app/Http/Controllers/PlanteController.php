@@ -8,13 +8,56 @@ use Illuminate\Http\Request;
 class PlanteController extends Controller
 {
     /**
-     * Afficher la liste des plantes actives avec filtres et tri
+     * Afficher la liste des plantes actives avec filtres
      */
     public function catalogue(Request $request)
     {
         // Requête de base : plantes actives avec leur catégorie
         $query = Plante::where('est_actif', true)
                        ->with('categorie');
+
+        // Initialisation des variables pour le titre et sous-titre
+        $titre = 'Notre collection de plantes';
+        $sousTitre = 'Des variétés soigneusement choisies pour embellir votre espace et leur facilité d\'entretien.';
+        $categorieActive = null;
+
+        // Filtrage par catégorie
+        if ($request->filled('categorie')) {
+            $categorie = strtolower($request->categorie);
+
+            // Mapping des URLs vers les noms de catégories en base de données
+            $categorieMapping = [
+                'cactus' => 'Cactus',
+                'succulentes' => 'Succulentes',
+                'diverses' => 'Plantes Diverses'
+            ];
+
+            // Titres et sous-titres personnalisés par catégorie
+            $contenuMapping = [
+                'cactus' => [
+                    'titre' => 'Nos Cactus',
+                    'sousTitre' => 'Découvrez notre collection de cactus, des plantes résistantes et fascinantes qui apportent une touche unique à votre intérieur.'
+                ],
+                'succulentes' => [
+                    'titre' => 'Nos Succulentes',
+                    'sousTitre' => 'Explorez notre sélection de succulentes, des plantes grasses faciles d\'entretien et décoratives pour tous les espaces.'
+                ],
+                'diverses' => [
+                    'titre' => 'Nos Plantes Diverses',
+                    'sousTitre' => 'Parcourez notre variété de plantes pour tous les goûts, des plantes fleuries aux plantes vertes d\'intérieur.'
+                ]
+            ];
+
+            if (isset($categorieMapping[$categorie])) {
+                $categorieActive = $categorie;
+                $titre = $contenuMapping[$categorie]['titre'];
+                $sousTitre = $contenuMapping[$categorie]['sousTitre'];
+
+                $query->whereHas('categorie', function($q) use ($categorieMapping, $categorie) {
+                    $q->where('nom', $categorieMapping[$categorie]);
+                });
+            }
+        }
 
         // Filtrage par arrosage
         if ($request->filled('arrosage')) {
@@ -26,41 +69,10 @@ class PlanteController extends Controller
             $query->where('exposition', $request->exposition);
         }
 
-        // Gestion du paramètre 'filter' pour tri et filtrage par catégorie
-        if ($request->filled('filter')) {
-            $filter = $request->filter;
-
-            // --- TRI PAR PRIX ---
-            if ($filter === 'prix_asc') {
-                // Tri par prix croissant (du moins cher au plus cher)
-                $query->orderBy('prix', 'asc');
-            } elseif ($filter === 'prix_desc') {
-                // Tri par prix décroissant (du plus cher au moins cher)
-                $query->orderBy('prix', 'desc');
-            }
-            // --- FILTRAGE PAR CATÉGORIE ---
-            elseif ($filter === 'plantes_interieur') {
-                // Filtre : Plantes d'intérieur vertes
-                $query->whereHas('categorie', function($q) {
-                    $q->where('nom', 'Plantes d\'intérieur vertes');
-                });
-            } elseif ($filter === 'cactus_succulentes') {
-                // Filtre : Cactus & Succulentes
-                $query->whereHas('categorie', function($q) {
-                    $q->where('nom', 'Cactus & Succulentes');
-                });
-            } elseif ($filter === 'plantes_fleuries') {
-                // Filtre : Plantes Fleuries
-                $query->whereHas('categorie', function($q) {
-                    $q->where('nom', 'Plantes Fleuries');
-                });
-            }
-        }
-
         // Pagination : 12 plantes par page
         $plantes = $query->paginate(12);
 
-        return view('layouts.plantes.catalogue', compact('plantes'));
+        return view('layouts.plantes.catalogue', compact('plantes', 'titre', 'sousTitre', 'categorieActive'));
     }
 
     /**
@@ -70,6 +82,24 @@ class PlanteController extends Controller
     {
         $plante->load(['categorie', 'photos']);
 
-        return view('layouts.plantes.show', compact('plante'));
+        // Récupérer 4 plantes de la même catégorie (excluant la plante actuelle)
+        $plantesLiees = Plante::where('categorie_id', $plante->categorie_id)
+            ->where('id', '!=', $plante->id)
+            ->where('est_actif', true)
+            ->limit(4)
+            ->get();
+
+        // Si moins de 4 plantes, compléter avec d'autres plantes
+        if ($plantesLiees->count() < 4) {
+            $autresPlantes = Plante::where('categorie_id', '!=', $plante->categorie_id)
+                ->where('id', '!=', $plante->id)
+                ->where('est_actif', true)
+                ->limit(4 - $plantesLiees->count())
+                ->get();
+
+            $plantesLiees = $plantesLiees->merge($autresPlantes);
+        }
+
+        return view('layouts.plantes.show', compact('plante', 'plantesLiees'));
     }
 }

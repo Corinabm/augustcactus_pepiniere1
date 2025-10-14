@@ -14,13 +14,11 @@ class CatalogueSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Création des 5 Catégories
+        // 1. Création des 3 Catégories
         $categoriesData = [
-            ['nom' => 'Cactus & Succulentes'],
-            ['nom' => 'Plantes Fleuries'],
-            ['nom' => 'Plantes d\'Intérieur Vertes'],
-            ['nom' => 'Arbres et Arbustes'],
-            ['nom' => 'Aromatiques & Herbes'],
+            ['nom' => 'Cactus'],
+            ['nom' => 'Succulentes'],
+            ['nom' => 'Plantes Diverses'],
         ];
 
         foreach ($categoriesData as $data) {
@@ -28,16 +26,28 @@ class CatalogueSeeder extends Seeder
         }
 
         // Récupération des IDs des catégories pour la liaison
-        $cactiId = Categorie::where('nom', 'Cactus & Succulentes')->first()->id;
-        $fleurieId = Categorie::where('nom', 'Plantes Fleuries')->first()->id;
-        $interieurId = Categorie::where('nom', 'Plantes d\'Intérieur Vertes')->first()->id;
-        $arbresId = Categorie::where('nom', 'Arbres et Arbustes')->first()->id;
+        $cactusId = Categorie::where('nom', 'Cactus')->first()->id;
+        $succulentesId = Categorie::where('nom', 'Succulentes')->first()->id;
+        $diversesId = Categorie::where('nom', 'Plantes Diverses')->first()->id;
         
         // 2. Création des 10 Plantes
         $plantesData = [
-            // Cacti & Succulentes
+            // Cactus
             [
-                'categorie_id' => $cactiId,
+                'categorie_id' => $cactusId,
+                'nom_commun' => 'Cactus Ourson',
+                'nom_scientifique' => 'Mammillaria Elongata',
+                'description' => 'Un cactus sans épines agressives, ressemblant à une petite patte d\'ours.',
+                'prix' => 12.00,
+                'taille' => 'petit',
+                'exposition' => 'soleil',
+                'arrosage' => 'faible',
+                'stock' => 25,
+                'est_actif' => true,
+            ],
+            // Succulentes
+            [
+                'categorie_id' => $succulentesId,
                 'nom_commun' => 'Echeveria Perle',
                 'nom_scientifique' => 'Echeveria Elegans',
                 'description' => 'Une succulente populaire en forme de rosette, facile d\'entretien et parfaite pour les débutants.',
@@ -49,20 +59,20 @@ class CatalogueSeeder extends Seeder
                 'est_actif' => true,
             ],
             [
-                'categorie_id' => $cactiId,
-                'nom_commun' => 'Cactus Ourson',
-                'nom_scientifique' => 'Mammillaria Elongata',
-                'description' => 'Un cactus sans épines agressives, ressemblant à une petite patte d\'ours.',
-                'prix' => 12.00,
-                'taille' => 'petit',
+                'categorie_id' => $succulentesId,
+                'nom_commun' => 'Aloe Vera',
+                'nom_scientifique' => 'Aloe Barbadensis Miller',
+                'description' => 'Une plante médicinale aux feuilles charnues, utile pour les brûlures et décorative.',
+                'prix' => 14.99,
+                'taille' => 'moyen',
                 'exposition' => 'soleil',
                 'arrosage' => 'faible',
-                'stock' => 25,
+                'stock' => 40,
                 'est_actif' => true,
             ],
-            // Plantes Fleuries
+            // Plantes Diverses
             [
-                'categorie_id' => $fleurieId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Orchidée Phalaenopsis',
                 'nom_scientifique' => 'Phalaenopsis spp.',
                 'description' => 'La reine des plantes d\'intérieur, avec ses fleurs élégantes et durables.',
@@ -74,7 +84,7 @@ class CatalogueSeeder extends Seeder
                 'est_actif' => true,
             ],
             [
-                'categorie_id' => $fleurieId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Anthurium Rouge',
                 'nom_scientifique' => 'Anthurium Andraeanum',
                 'description' => 'Plante tropicale aux feuilles en forme de cœur et aux spathes rouges brillantes.',
@@ -85,9 +95,8 @@ class CatalogueSeeder extends Seeder
                 'stock' => 18,
                 'est_actif' => true,
             ],
-            // Plantes d'Intérieur Vertes
             [
-                'categorie_id' => $interieurId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Monstera Deliciosa',
                 'nom_scientifique' => 'Monstera Deliciosa',
                 'description' => 'La plante star des réseaux sociaux, avec ses grandes feuilles découpées.',
@@ -99,7 +108,7 @@ class CatalogueSeeder extends Seeder
                 'est_actif' => true,
             ],
             [
-                'categorie_id' => $interieurId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Ficus Lyrata',
                 'nom_scientifique' => 'Ficus Lyrata',
                 'description' => 'Le figuier lyre, connu pour ses feuilles en forme de violon. Demande de la lumière indirecte.',
@@ -111,7 +120,7 @@ class CatalogueSeeder extends Seeder
                 'est_actif' => true,
             ],
             [
-                'categorie_id' => $interieurId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Pothos Doré',
                 'nom_scientifique' => 'Epipremnum Aureum',
                 'description' => 'Plante grimpante ou retombante très robuste, idéale pour purifier l\'air.',
@@ -122,9 +131,8 @@ class CatalogueSeeder extends Seeder
                 'stock' => 30,
                 'est_actif' => true,
             ],
-            // Arbres et Arbustes
             [
-                'categorie_id' => $arbresId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Olivier d\'Intérieur',
                 'nom_scientifique' => 'Olea Europaea',
                 'description' => 'Un petit olivier pour un air de Provence sur votre balcon ou dans votre salon.',
@@ -136,7 +144,7 @@ class CatalogueSeeder extends Seeder
                 'est_actif' => true,
             ],
             [
-                'categorie_id' => $arbresId,
+                'categorie_id' => $diversesId,
                 'nom_commun' => 'Bonsaï Ficus',
                 'nom_scientifique' => 'Ficus Retusa',
                 'description' => 'Un bonsaï facile à entretenir, avec un tronc épais et des racines aériennes.',
@@ -145,19 +153,6 @@ class CatalogueSeeder extends Seeder
                 'exposition' => 'mi-ombre',
                 'arrosage' => 'regulier',
                 'stock' => 12,
-                'est_actif' => true,
-            ],
-            // Une autre Succulente
-            [
-                'categorie_id' => $cactiId,
-                'nom_commun' => 'Aloe Vera',
-                'nom_scientifique' => 'Aloe Barbadensis Miller',
-                'description' => 'Une plante médicinale aux feuilles charnues, utile pour les brûlures et décorative.',
-                'prix' => 14.99,
-                'taille' => 'moyen',
-                'exposition' => 'soleil',
-                'arrosage' => 'faible',
-                'stock' => 40,
                 'est_actif' => true,
             ],
         ];

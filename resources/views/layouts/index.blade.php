@@ -100,60 +100,33 @@
     <!-- CTA Catalogue -->
     <section id="catalogue" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-4 text-olive">Découvrir Nos Plantes</h2>
+            <h2 class="text-4xl font-bold text-center mb-4 text-olive">Découvrez notre catalogue</h2>
             <p class="text-center text-gray-600 mb-12 text-lg">Une sélection de nos plus belles variétés</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <!-- Plante 1 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-                    <div class="h-64 bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center">
-                        <svg class="w-32 h-32 text-olive opacity-50" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"></path>
-                        </svg>
+                <!-- Catégorie 1 - Cactus -->
+                <a href="{{ route('plantes.catalogue') }}?categorie=cactus" class="flex flex-col items-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden shadow-lg mb-6">
+                        <img src="{{ asset('images/categorie-cactus.jpg') }}" alt="Cactus" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-olive">Monstera Deliciosa</h3>
-                        <p class="text-gray-600 mb-4">Plante d'intérieur</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-yellow">24,90€</span>
-                            <span class="text-sm text-gray-500">En stock</span>
-                        </div>
-                    </div>
-                </div>
+                    <h3 class="text-2xl font-bold text-olive">Cactus</h3>
+                </a>
 
-                <!-- Plante 2 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-                    <div class="h-64 bg-gradient-to-br from-yellow-200 to-yellow-400 flex items-center justify-center">
-                        <svg class="w-32 h-32 text-olive opacity-50" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"></path>
-                        </svg>
+                <!-- Catégorie 2 - Succulentes -->
+                <a href="{{ route('plantes.catalogue') }}?categorie=succulentes" class="flex flex-col items-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden shadow-lg mb-6">
+                        <img src="{{ asset('images/categorie-succulentes.jpg') }}" alt="Succulentes" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-olive">Cactus Golden Barrel</h3>
-                        <p class="text-gray-600 mb-4">Plante grasse</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-yellow">18,50€</span>
-                            <span class="text-sm text-gray-500">En stock</span>
-                        </div>
-                    </div>
-                </div>
+                    <h3 class="text-2xl font-bold text-olive">Succulentes</h3>
+                </a>
 
-                <!-- Plante 3 -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-                    <div class="h-64 bg-gradient-to-br from-blue-200 to-blue-400 flex items-center justify-center">
-                        <svg class="w-32 h-32 text-olive opacity-50" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"></path>
-                        </svg>
+                <!-- Catégorie 3 - Plantes Diverses -->
+                <a href="{{ route('plantes.catalogue') }}?categorie=diverses" class="flex flex-col items-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden shadow-lg mb-6">
+                        <img src="{{ asset('images/categorie-diverses.jpg') }}" alt="Plantes Diverses" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-olive">Ficus Lyrata</h3>
-                        <p class="text-gray-600 mb-4">Arbre d'intérieur</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-yellow">32,90€</span>
-                            <span class="text-sm text-gray-500">En stock</span>
-                        </div>
-                    </div>
-                </div>
+                    <h3 class="text-2xl font-bold text-olive">Plantes Diverses</h3>
+                </a>
             </div>
 
             <div class="text-center">
