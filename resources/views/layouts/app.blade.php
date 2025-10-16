@@ -31,43 +31,166 @@
             box-sizing: border-box;
         }
 
-        /* Empêcher les images de déborder */
+        /* ===== IMAGES RESPONSIVE ===== */
         img {
             max-width: 100%;
             height: auto;
         }
-        /* ===== FOCUS & ACCESSIBILITÉ ===== */
-        .nav-link, .mobile-nav-link, .mobile-dropdown-btn, button.nav-link {
-            outline: none !important;
+
+        /* Logo navbar toujours visible */
+        #navbar-logo {
+            display: inline-block !important;
+            opacity: 1 !important;
         }
 
-        .nav-link:hover, .nav-link:focus,
-        .mobile-nav-link:hover, .mobile-nav-link:focus,
-        .mobile-dropdown-btn:hover, .mobile-dropdown-btn:focus,
-        button.nav-link:hover, button.nav-link:focus {
-            outline: none !important;
+        /* Images avec position absolute - pour sections index (services, catalogue) */
+        a[class*="group"] img[class*="absolute"],
+        .group img[class*="absolute"] {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
         }
 
-        .nav-link:focus-visible, .mobile-nav-link:focus-visible, .mobile-dropdown-btn:focus-visible {
-            outline: 2px solid #0A2D19 !important;
+        /* Images catalogue et services - remplir le conteneur (pour cartes standard) */
+        .card img,
+        .service-card img,
+        .catalogue-card img,
+        .plante-card img,
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Conteneurs d'images carrés */
+        .image-container,
+        .card-image,
+        .service-image,
+        .catalogue-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img,
+        .card-image img,
+        .service-image img,
+        .catalogue-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Ratio d'aspect pour images */
+        .aspect-square {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        .aspect-square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .aspect-video {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .aspect-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .aspect-portrait {
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+        }
+
+        .aspect-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Grille responsive pour cartes */
+        .grid-cards {
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (max-width: 639px) {
+            .grid-cards {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .grid-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Hero images responsive */
+        @media (max-width: 639px) {
+            .hero-image, .banner-image {
+                max-height: 50vh;
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .hero-image, .banner-image {
+                max-height: 60vh;
+                object-fit: cover;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-image, .banner-image {
+                max-height: 70vh;
+                object-fit: cover;
+            }
+        }
+
+        /* Lazy loading avec apparition progressive */
+        img[loading="lazy"]:not(.loaded) {
+            opacity: 0.5;
+        }
+
+        img[loading="lazy"].loaded {
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* ===== ACCESSIBILITÉ ===== */
+        .nav-link:focus-visible,
+        .mobile-nav-link:focus-visible,
+        .mobile-dropdown-btn:focus-visible {
+            outline: 2px solid #0A2D19;
             outline-offset: 3px;
             border-radius: 6px;
         }
 
-        /* ===== RESPONSIVE MOBILE-FIRST ===== */
-
-        /* Touch targets minimum 44px (WCAG) */
+        /* Touch targets WCAG */
         .mobile-nav-link, .mobile-dropdown-btn {
             min-height: 44px;
         }
 
-        /* Lisibilité texte mobile */
-        body {
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        /* Desktop (768px+) */
+        /* ===== RESPONSIVE UNIQUEMENT DESKTOP ===== */
         @media (min-width: 768px) {
             #navbar.bg-transparent .nav-link {
                 text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
@@ -439,6 +562,23 @@
                         }
                     }
                 }, 100);
+            });
+        });
+
+        // ===== OPTIMISATION IMAGES RESPONSIVE =====
+
+        // Ajouter la classe 'loaded' aux images lazy après chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+            lazyImages.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                }
             });
         });
     </script>

@@ -72,8 +72,8 @@
                     <img src="{{ asset('images/service-amenagement.jpg') }}" alt="Aménagement Paysager" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-                        <h3 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">Aménagement paysager</h3>
-                        <p class="text-white/90 text-lg mb-6 max-w-xl">Sublimez votre extérieur avec un aménagement paysager pensé pour vous</p>
+                        <h3 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">Aménagement</h3>
+                        <p class="text-white/90 text-lg mb-6 max-w-xl">Sublimez votre extérieur avec un aménagement pensé pour vous</p>
                         <div class="flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform">
                             <span>En savoir plus</span>
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
