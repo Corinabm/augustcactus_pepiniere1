@@ -13,13 +13,30 @@
     <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
+        /* Prévenir débordement horizontal sur tous écrans */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
         body {
             font-family: 'Source Sans Pro', sans-serif;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
         }
-        /* Supprimer tout outline et border par défaut */
+
+        /* Assurer que tous les conteneurs respectent la largeur */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Empêcher les images de déborder */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* ===== FOCUS & ACCESSIBILITÉ ===== */
         .nav-link, .mobile-nav-link, .mobile-dropdown-btn, button.nav-link {
             outline: none !important;
         }
@@ -31,46 +48,29 @@
             outline: none !important;
         }
 
-        /* Amélioration du contraste et du focus - uniquement au clavier */
         .nav-link:focus-visible, .mobile-nav-link:focus-visible, .mobile-dropdown-btn:focus-visible {
             outline: 2px solid #0A2D19 !important;
             outline-offset: 3px;
             border-radius: 6px;
         }
-        /* Assurer un fond pour le contraste quand navbar transparente - uniquement desktop */
+
+        /* ===== RESPONSIVE MOBILE-FIRST ===== */
+
+        /* Touch targets minimum 44px (WCAG) */
+        .mobile-nav-link, .mobile-dropdown-btn {
+            min-height: 44px;
+        }
+
+        /* Lisibilité texte mobile */
+        body {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        /* Desktop (768px+) */
         @media (min-width: 768px) {
             #navbar.bg-transparent .nav-link {
                 text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-            }
-        }
-
-        /* Optimisations tablettes */
-        @media (min-width: 640px) and (max-width: 767px) {
-            .nav-link, .mobile-nav-link {
-                font-size: 0.9375rem;
-            }
-        }
-
-        /* Touch targets pour mobile */
-        @media (max-width: 639px) {
-            .mobile-nav-link, .mobile-dropdown-btn {
-                min-height: 44px;
-            }
-        }
-
-        /* Amélioration de la lisibilité du texte sur mobile */
-        @media (max-width: 639px) {
-            body {
-                -webkit-text-size-adjust: 100%;
-                text-size-adjust: 100%;
-            }
-        }
-
-        /* Optimisation du footer pour très petits écrans */
-        @media (max-width: 359px) {
-            footer {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
             }
         }
 
