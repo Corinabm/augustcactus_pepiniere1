@@ -17,7 +17,7 @@ class PlanteController extends Controller
                        ->with('categorie');
 
         // Initialisation des variables pour le titre et sous-titre
-        $titre = 'Notre collection de plantes';
+        $titre = 'Notre catalogue de plantes';
         $sousTitre = 'Des variétés soigneusement choisies pour embellir votre espace et leur facilité d\'entretien.';
         $categorieActive = null;
 
