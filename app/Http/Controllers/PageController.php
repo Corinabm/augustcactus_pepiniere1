@@ -39,6 +39,14 @@ class PageController extends Controller
     }
 
     /**
+     * Page entretien jardin ou plantes
+     */
+    public function entretien()
+    {
+        return view('layouts.entretien');
+    }
+
+    /**
      * Page galerie
      */
     public function galerie()

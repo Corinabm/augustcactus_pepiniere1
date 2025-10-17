@@ -9,6 +9,7 @@ Route::get('/', [PageController::class, 'index'])->name('index'); //page d'accue
 Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/amenagement', [PageController::class, 'amenagement'])->name('amenagement');
 Route::get('/location', [PageController::class, 'location'])->name('location');
+Route::get('/entretien', [PageController::class, 'entretien'])->name('entretien');
 Route::get('/galerie', [PageController::class, 'galerie'])->name('galerie');
 Route::get('/a-propos', [PageController::class, 'aPropos'])->name('a-propos');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
