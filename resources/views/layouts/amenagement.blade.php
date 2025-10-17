@@ -4,162 +4,273 @@
 
 @section('content')
 <!-- Espacement pour la navbar fixe -->
-<div class="pt-24"></div>
+<div class="pt-16 sm:pt-20"></div>
 
-<!-- Section Hero -->
-<section class="relative bg-white py-12 sm:py-16 md:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-olive">Aménagement Paysager</h1>
-        <p class="text-base sm:text-lg md:text-xl text-gray-600">Créez l'espace extérieur de vos rêves avec nos experts</p>
+<!-- Breadcrumb -->
+<nav class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <ol class="flex items-center space-x-2 text-sm">
+            <li>
+                <a href="{{ route('index') }}" class="text-gray-500 hover:text-olive transition-colors duration-200">
+                    Accueil
+                </a>
+            </li>
+            <li class="flex items-center">
+                <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <a href="{{ route('services') }}" class="text-gray-500 hover:text-olive transition-colors duration-200">
+                    Services
+                </a>
+            </li>
+            <li class="flex items-center">
+                <svg class="w-4 h-4 text-gray-400 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-900 font-medium">
+                    Aménagement
+                </span>
+            </li>
+        </ol>
     </div>
-</section>
+</nav>
 
-<!-- Section Introduction -->
-<section class="py-12 sm:py-16 md:py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-olive mb-4 sm:mb-6">Transformez vos espaces extérieurs</h2>
-                <div class="space-y-4 text-gray-700 text-base sm:text-lg">
-                    <p>
-                        Votre jardin est bien plus qu'un simple espace extérieur. C'est un lieu de vie, de détente et de partage. Chez <strong>August Cactus</strong>, nous mettons notre expertise au service de vos projets d'aménagement paysager pour créer des espaces uniques qui vous ressemblent.
-                    </p>
-                    <p>
-                        De la conception à la réalisation, notre équipe vous accompagne à chaque étape pour donner vie à vos envies. Que vous souhaitiez créer un jardin tropical, un espace zen ou un coin détente contemporain, nous adaptons nos prestations à vos besoins et à votre budget.
+<main class="bg-white">
+    <!-- Hero Section - Avec image à droite -->
+    <section class="relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Texte à gauche -->
+                <div>
+                    <div class="mb-6 sm:mb-8">
+                        <span class="inline-block px-5 py-2 bg-olive/10 text-olive text-xs sm:text-sm font-semibold rounded-full tracking-wide">
+                            AMÉNAGEMENT PAYSAGER
+                        </span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 sm:mb-10 leading-[0.95] tracking-tight">
+                        Créez l'espace<br>
+                        extérieur de<br>
+                        vos <span class="text-olive">rêves</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
+                        Nous apportons notre savoir pour aider au mieux le client en fonction de ses souhaits et de sa demande.
                     </p>
                 </div>
-            </div>
-            <div>
-                <img src="https://picsum.photos/600/400?random=60" alt="Aménagement paysager" class="w-full h-auto shadow-xl">
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Section Nos Prestations -->
-<section class="py-12 sm:py-16 md:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-olive mb-8 sm:mb-12 text-center">Nos Prestations</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Prestation 1 -->
-            <div class="bg-gray-50 p-6 sm:p-8">
-                <div class="text-4xl sm:text-5xl mb-4">🌳</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-olive mb-3">Conception de jardins</h3>
-                <p class="text-gray-600 text-sm sm:text-base">
-                    Étude personnalisée de votre projet avec plans détaillés et sélection des végétaux adaptés à votre environnement et vos goûts.
-                </p>
-            </div>
-
-            <!-- Prestation 2 -->
-            <div class="bg-gray-50 p-6 sm:p-8">
-                <div class="text-4xl sm:text-5xl mb-4">🌿</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-olive mb-3">Plantation</h3>
-                <p class="text-gray-600 text-sm sm:text-base">
-                    Plantation d'arbres, arbustes et plantes selon les règles de l'art pour garantir une bonne reprise et une croissance optimale.
-                </p>
-            </div>
-
-            <!-- Prestation 3 -->
-            <div class="bg-gray-50 p-6 sm:p-8">
-                <div class="text-4xl sm:text-5xl mb-4">🪨</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-olive mb-3">Massifs & Rocailles</h3>
-                <p class="text-gray-600 text-sm sm:text-base">
-                    Création de massifs colorés et de rocailles esthétiques pour structurer votre jardin et apporter du relief à vos espaces.
-                </p>
-            </div>
-
-            <!-- Prestation 4 -->
-            <div class="bg-gray-50 p-6 sm:p-8">
-                <div class="text-4xl sm:text-5xl mb-4">💧</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-olive mb-3">Irrigation</h3>
-                <p class="text-gray-600 text-sm sm:text-base">
-                    Installation de systèmes d'arrosage automatique pour faciliter l'entretien et optimiser la consommation d'eau.
-                </p>
-            </div>
-
-            <!-- Prestation 5 -->
-            <div class="bg-gray-50 p-6 sm:p-8">
-                <div class="text-4xl sm:text-5xl mb-4">🌱</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-olive mb-3">Engazonnement</h3>
-                <p class="text-gray-600 text-sm sm:text-base">
-                    Création de pelouses par semis ou placage pour un gazon dense et verdoyant adapté à votre usage.
-                </p>
-            </div>
-
-            <!-- Prestation 6 -->
-            <div class="bg-gray-50 p-6 sm:p-8">
-                <div class="text-4xl sm:text-5xl mb-4">🛠️</div>
-                <h3 class="text-xl sm:text-2xl font-bold text-olive mb-3">Entretien</h3>
-                <p class="text-gray-600 text-sm sm:text-base">
-                    Services d'entretien régulier pour maintenir la beauté de vos aménagements : taille, désherbage, fertilisation.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section Notre Processus -->
-<section class="py-12 sm:py-16 md:py-20 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-olive mb-8 sm:mb-12 text-center">Notre Processus</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
-            <!-- Étape 1 -->
-            <div class="text-center">
-                <div class="w-16 h-16 bg-olive text-white font-bold text-2xl flex items-center justify-center rounded-full mx-auto mb-4">1</div>
-                <h3 class="text-lg font-bold text-olive mb-2">Consultation</h3>
-                <p class="text-gray-600 text-sm">Rencontre pour comprendre vos besoins et vos envies</p>
-            </div>
-
-            <!-- Étape 2 -->
-            <div class="text-center">
-                <div class="w-16 h-16 bg-olive text-white font-bold text-2xl flex items-center justify-center rounded-full mx-auto mb-4">2</div>
-                <h3 class="text-lg font-bold text-olive mb-2">Conception</h3>
-                <p class="text-gray-600 text-sm">Élaboration de plans et choix des végétaux</p>
-            </div>
-
-            <!-- Étape 3 -->
-            <div class="text-center">
-                <div class="w-16 h-16 bg-olive text-white font-bold text-2xl flex items-center justify-center rounded-full mx-auto mb-4">3</div>
-                <h3 class="text-lg font-bold text-olive mb-2">Réalisation</h3>
-                <p class="text-gray-600 text-sm">Mise en œuvre de l'aménagement par nos experts</p>
-            </div>
-
-            <!-- Étape 4 -->
-            <div class="text-center">
-                <div class="w-16 h-16 bg-olive text-white font-bold text-2xl flex items-center justify-center rounded-full mx-auto mb-4">4</div>
-                <h3 class="text-lg font-bold text-olive mb-2">Suivi</h3>
-                <p class="text-gray-600 text-sm">Accompagnement et conseils d'entretien</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section Galerie -->
-<section class="py-12 sm:py-16 md:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-olive mb-8 sm:mb-12 text-center">Nos Réalisations</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            @for ($i = 61; $i <= 66; $i++)
-                <div class="overflow-hidden shadow-lg">
-                    <img src="https://picsum.photos/600/400?random={{ $i }}" alt="Réalisation {{ $i - 60 }}" class="w-full h-64 object-cover">
+                <!-- Image à droite -->
+                <div class="relative lg:order-last w-full">
+                    <div class="relative w-full" style="padding-bottom: 75%;">
+                        <img src="{{ asset('images/services/amenagement.jpg') }}"
+                             alt="Aménagement paysager"
+                             class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl">
+                    </div>
+                    <!-- Élément décoratif derrière l'image -->
+                    <div class="absolute -bottom-6 -right-6 w-full h-full bg-olive/5 rounded-2xl -z-10"></div>
                 </div>
-            @endfor
+            </div>
         </div>
-    </div>
-</section>
 
-<!-- Section CTA -->
-<section class="py-12 sm:py-16 md:py-20 bg-white border-t border-gray-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-olive">Prêt à transformer votre jardin ?</h2>
-        <p class="text-lg sm:text-xl mb-6 sm:mb-8 text-gray-600">
-            Contactez-nous pour une consultation gratuite et recevez un devis personnalisé pour votre projet d'aménagement paysager.
-        </p>
-        <div class="flex justify-center">
-            <a href="{{ route('contact') }}" class="bg-yellow text-olive px-6 sm:px-8 py-3 sm:py-4 font-bold text-base sm:text-lg hover:bg-yellow/90 transition-colors duration-300 rounded-lg">
-                Demander un devis gratuit
+        <!-- Éléments décoratifs subtils -->
+        <div class="absolute top-20 right-10 w-72 h-72 bg-olive/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-yellow/10 rounded-full blur-3xl -z-10"></div>
+    </section>
+
+    <!-- Citation - Très épurée -->
+    <section class="py-20 sm:py-28 md:py-36">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="relative inline-block">
+                <div class="absolute -top-6 -left-6 sm:-top-10 sm:-left-10 w-20 h-20 sm:w-24 sm:h-24 bg-olive/5 rounded-full"></div>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight relative">
+                    Tout aménagement<br>
+                    est <span class="text-olive italic relative">
+                        unique
+                        <svg class="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 10C50 5 150 5 198 10" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="text-olive/30"/>
+                        </svg>
+                    </span> !
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notre Expertise - Layout aéré -->
+    <section class="py-20 sm:py-28 md:py-36 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <!-- Texte -->
+                <div>
+                    <div class="mb-6">
+                        <span class="text-sm font-semibold text-olive/80 tracking-widest uppercase">Notre Expertise</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-10 leading-tight">
+                        Une approche<br>personnalisée
+                    </h2>
+                    <div class="space-y-6 text-lg sm:text-xl text-gray-700 leading-relaxed">
+                        <p>
+                            Votre jardin est bien plus qu'un simple espace extérieur. C'est un <strong class="text-gray-900">lieu de vie</strong>, de détente et de partage.
+                        </p>
+                        <p>
+                            Chez <strong class="text-olive">August Cactus</strong>, nous mettons notre expertise au service de vos projets pour créer des espaces uniques qui vous ressemblent.
+                        </p>
+                        <p>
+                            De la conception à la réalisation, notre équipe vous accompagne à chaque étape pour donner vie à vos envies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Images en mosaïque -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-6">
+                        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+                            <img src="https://picsum.photos/400/400?random=64"
+                                 alt="Jardin aménagé"
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                            <img src="https://picsum.photos/400/500?random=65"
+                                 alt="Plantes"
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                    <div class="mt-12">
+                        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-lg">
+                            <img src="https://picsum.photos/400/500?random=66"
+                                 alt="Aménagement"
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notre Processus - Design épuré -->
+    <section class="py-20 sm:py-28 md:py-36">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 sm:mb-28">
+                <div class="mb-6">
+                    <span class="text-sm font-semibold text-olive/80 tracking-widest uppercase">Comment ça marche</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Notre processus
+                </h2>
+                <p class="text-xl sm:text-2xl text-gray-600 max-w-2xl mx-auto font-light">
+                    Un accompagnement sur mesure de A à Z
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+                <!-- Étape 1 -->
+                <div class="group">
+                    <div class="bg-white rounded-3xl p-8 sm:p-10 h-full border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-xl">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-olive/10 rounded-2xl group-hover:bg-olive group-hover:scale-110 transition-all duration-300">
+                                <span class="text-2xl font-bold text-olive group-hover:text-white">01</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                            Consultation
+                        </h3>
+                        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Rencontre pour comprendre vos besoins et vos envies
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Étape 2 -->
+                <div class="group">
+                    <div class="bg-white rounded-3xl p-8 sm:p-10 h-full border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-xl">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-olive/10 rounded-2xl group-hover:bg-olive group-hover:scale-110 transition-all duration-300">
+                                <span class="text-2xl font-bold text-olive group-hover:text-white">02</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                            Conception
+                        </h3>
+                        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Élaboration de plans et choix des végétaux adaptés
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Étape 3 -->
+                <div class="group">
+                    <div class="bg-white rounded-3xl p-8 sm:p-10 h-full border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-xl">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-olive/10 rounded-2xl group-hover:bg-olive group-hover:scale-110 transition-all duration-300">
+                                <span class="text-2xl font-bold text-olive group-hover:text-white">03</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                            Réalisation
+                        </h3>
+                        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Mise en œuvre de l'aménagement par nos experts
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Étape 4 -->
+                <div class="group">
+                    <div class="bg-white rounded-3xl p-8 sm:p-10 h-full border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-xl">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-olive/10 rounded-2xl group-hover:bg-olive group-hover:scale-110 transition-all duration-300">
+                                <span class="text-2xl font-bold text-olive group-hover:text-white">04</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                            Suivi
+                        </h3>
+                        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+                            Accompagnement et conseils d'entretien personnalisés
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA - Fond clair avec accent olive/yellow -->
+    <section class="py-24 sm:py-32 md:py-40 bg-gradient-to-br from-olive/5 via-yellow/5 to-olive/10 relative overflow-hidden">
+        <!-- Formes décoratives -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-olive/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-yellow/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 sm:mb-10 leading-tight">
+                Prêt à transformer<br>votre jardin ?
+            </h2>
+            <p class="text-xl sm:text-2xl md:text-3xl text-gray-600 mb-12 sm:mb-16 font-light leading-relaxed max-w-3xl mx-auto">
+                Contactez-nous pour une consultation gratuite et recevez un devis personnalisé
+            </p>
+            <a href="{{ route('contact') }}"
+               class="group inline-flex items-center gap-3 px-10 sm:px-12 py-5 sm:py-6 bg-olive text-white font-bold text-lg sm:text-xl rounded-full shadow-xl">
+                <span>Demander un devis gratuit</span>
+                <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
             </a>
         </div>
-    </div>
-</section>
+    </section>
+</main>
+
+@endsection
+
+@section('styles')
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
 @endsection
