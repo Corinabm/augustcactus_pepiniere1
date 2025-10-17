@@ -270,7 +270,7 @@
                         <!-- Dropdown menu -->
                         <div id="services-menu" class="dropdown-menu absolute left-0 mt-2 w-56 lg:w-60 bg-white/95 backdrop-blur-md shadow-xl border border-gray-100 rounded-xl opacity-0 invisible transition-all duration-300 z-50" role="menu" aria-labelledby="services-menu-btn">
                             <a href="{{ route('amenagement') }}" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive rounded-t-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Aménagement</a>
-                            <a href="{{ route('services') }}#entretien" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Entretien jardin ou plantes</a>
+                            <a href="{{ route('entretien') }}#entretien" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Entretien jardin ou plantes</a>
                             <a href="{{ route('location') }}" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive rounded-b-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Location de plante</a>
                         </div>
                     </div>
@@ -319,7 +319,7 @@
                     <div id="mobile-dropdown-services" class="mobile-dropdown-content hidden pl-4 sm:pl-6 space-y-0.5 mt-1">
                         <a href="{{ route('services') }}" class="mobile-nav-link block px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300">Tous les services</a>
                         <a href="{{ route('amenagement') }}" class="mobile-nav-link block px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300">Aménagement</a>
-                        <a href="{{ route('services') }}#entretien" class="mobile-nav-link block px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300">Entretien jardin ou plantes</a>
+                        <a href="{{ route('entretien') }}#entretien" class="mobile-nav-link block px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300">Entretien jardin ou plantes</a>
                         <a href="{{ route('location') }}" class="mobile-nav-link block px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base text-gray-700 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-300">Location de plante</a>
                     </div>
                 </div>
