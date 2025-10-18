@@ -44,7 +44,7 @@
                 <div>
                     <div class="mb-6 sm:mb-8">
                         <span class="inline-block px-5 py-2 bg-olive/10 text-olive text-xs sm:text-sm font-semibold rounded-full tracking-wide">
-                            ENTRETIEN PROFESSIONNEL
+                            ENTRETIEN
                         </span>
                     </div>
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 sm:mb-10 leading-[0.95] tracking-tight">
@@ -53,7 +53,7 @@
                         <span class="text-olive">impeccable</span>
                     </h1>
                     <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
-                        Confiez l'entretien de votre jardin et vos plantes à nos experts pour un espace vert toujours parfait
+                        Confiez nous l'entretien de votre jardin et vos plantes 
                     </p>
                 </div>
 
@@ -85,11 +85,11 @@
                         <span class="text-sm font-semibold text-olive/80 tracking-widest uppercase">Notre Expertise</span>
                     </div>
                     <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-10 leading-tight">
-                        Des professionnels<br>à votre service
+                        Notre expertise<br>à votre service
                     </h2>
                     <div class="space-y-6 text-lg sm:text-xl text-gray-700 leading-relaxed">
                         <p>
-                            <strong class="text-olive">August Cactus</strong> assure l'entretien complet de vos jardins et espaces verts avec une expertise reconnue.
+                            <strong class="text-olive">August Cactus</strong> assure l'entretien de vos jardins.
                         </p>
                         <p>
                             Nous conseillons à nos clients un entretien régulier de leurs plantes pour garantir la réussite et la durabilité de leur jardin.
@@ -156,7 +156,7 @@
                             Expertise
                         </h3>
                         <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                            Équipe qualifiée avec une connaissance approfondie des plantes
+                            Une grande connaissance de plantes 
                         </p>
                     </div>
                 </div>
