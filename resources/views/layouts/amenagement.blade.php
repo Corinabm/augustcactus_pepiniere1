@@ -44,7 +44,7 @@
                 <div>
                     <div class="mb-6 sm:mb-8">
                         <span class="inline-block px-5 py-2 bg-olive/10 text-olive text-xs sm:text-sm font-semibold rounded-full tracking-wide">
-                            AMÉNAGEMENT PAYSAGER
+                            AMÉNAGEMENT
                         </span>
                     </div>
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 sm:mb-10 leading-[0.95] tracking-tight">
@@ -113,7 +113,7 @@
                             Chez <strong class="text-olive">August Cactus</strong>, nous mettons notre expertise au service de vos projets pour créer des espaces uniques qui vous ressemblent.
                         </p>
                         <p>
-                            De la conception à la réalisation, notre équipe vous accompagne à chaque étape pour donner vie à vos envies.
+                            De la conception à la réalisation, nous vous accompagnons à chaque étape pour donner vie à vos envies.
                         </p>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                             Conception
                         </h3>
                         <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                            Élaboration de plans et choix des végétaux adaptés
+                            Choix des végétaux en fonction de la taille
                         </p>
                     </div>
                 </div>
@@ -206,7 +206,7 @@
                             Réalisation
                         </h3>
                         <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                            Mise en œuvre de l'aménagement par nos experts
+                            Mise en œuvre de l'aménagement
                         </p>
                     </div>
                 </div>
