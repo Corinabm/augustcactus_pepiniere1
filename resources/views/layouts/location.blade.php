@@ -38,22 +38,16 @@
 <main class="bg-white">
     <!-- Hero Section -->
     <section class="relative overflow-hidden bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 md:pt-12 pb-20 sm:pb-24 md:pb-28 lg:pb-32">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Texte à gauche -->
                 <div>
-                    <div class="mb-6 sm:mb-8">
-                        <span class="inline-block px-5 py-2 bg-olive/10 text-olive text-xs sm:text-sm font-semibold rounded-full tracking-wide">
-                            LOCATION DE PLANTES
-                        </span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 sm:mb-10 leading-[0.95] tracking-tight">
-                        Des plantes<br>
-                        pour tous vos<br>
-                        <span class="text-olive">événements</span>
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-8 sm:mb-10 leading-[0.95] tracking-tight">
+                        Location de<br>
+                        <span class="text-olive">plantes</span>
                     </h1>
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
-                        Location flexible et sans engagement pour végétaliser vos espaces temporairement
+                    <p class="text-xl sm:text-2xl md:text-3xl text-gray-600 font-light leading-relaxed">
+                        Location flexible et sans engagement pour végétaliser vos espaces
                     </p>
                 </div>
 
@@ -122,10 +116,10 @@
                             </svg>
                         </div>
                         <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                            Plantes pour tous vos événements
+                            Plantes pour tous vos espaces
                         </h3>
                         <p class="text-lg text-gray-700 leading-relaxed">
-                            <strong class="text-olive">August Cactus</strong> propose une large gamme de plantes, compositions florales et cactus de différentes tailles en location.
+                            <strong class="text-olive">August Cactus</strong> propose une large gamme de plantes, compositions de plantes et cactus de différentes tailles en location.
                         </p>
                     </div>
                 </div>
@@ -145,7 +139,7 @@
                             Durée adaptée à vos besoins
                         </h3>
                         <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                            Événement ponctuel, exposition temporaire ou décoration saisonnière : nous adaptons la durée de location selon vos projets.
+                            Événement ponctuel, exposition temporaire ou décoration : nous adaptons la durée de location selon vos projets.
                         </p>
                         <ul class="space-y-3">
                             <li class="flex items-center gap-3 text-gray-700">
@@ -185,6 +179,248 @@
         </div>
     </section>
 
+<!-- Section Nos Plantes à Louer -->
+    <section class="py-12 sm:py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header centré -->
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="inline-block px-4 py-2 bg-olive/10 text-olive text-xs font-bold rounded-full tracking-wide mb-4">
+                    NOTRE CATALOGUE
+                </span>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Nos plantes disponibles<br>à la location
+                </h2>
+                <p class="text-xl sm:text-2xl text-gray-600 max-w-2xl mx-auto font-light">
+                    Une large sélection de plantes et cactus pour tous vos besoins
+                </p>
+            </div>
+
+            <!-- Carousel de plantes -->
+            <div class="relative">
+                <!-- Container du carousel -->
+                <div class="overflow-hidden" id="plantsCarousel">
+                    <div class="flex transition-transform duration-500 ease-out" id="carouselTrack">
+                        <!-- Plante 1 - Cactus -->
+                        <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="group">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-2xl">
+                                    <!-- Image -->
+                                    <div class="relative overflow-hidden aspect-[4/3]">
+                                        <img src="https://picsum.photos/600/450?random=80"
+                                             alt="Cactus"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute top-4 right-4 bg-olive text-white px-4 py-2 rounded-full text-sm font-bold">
+                                            Disponible
+                                        </div>
+                                    </div>
+                                    <!-- Contenu -->
+                                    <div class="p-6 sm:p-8">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                                            Cactus
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">
+                                            Idéal pour une ambiance désertique et moderne. Nécessite peu d'entretien.
+                                        </p>
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <span class="text-sm text-gray-500">Plusieurs tailles</span>
+                                            <span class="text-olive font-bold text-lg">Sur devis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Plante 2 - Plantes vertes -->
+                        <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="group">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-2xl">
+                                    <!-- Image -->
+                                    <div class="relative overflow-hidden aspect-[4/3]">
+                                        <img src="https://picsum.photos/600/450?random=81"
+                                             alt="Plantes vertes"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute top-4 right-4 bg-olive text-white px-4 py-2 rounded-full text-sm font-bold">
+                                            Disponible
+                                        </div>
+                                    </div>
+                                    <!-- Contenu -->
+                                    <div class="p-6 sm:p-8">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                                            Plantes vertes
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">
+                                            Pour apporter de la fraîcheur et purifier l'air de vos espaces.
+                                        </p>
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <span class="text-sm text-gray-500">Plusieurs variétés</span>
+                                            <span class="text-olive font-bold text-lg">Sur devis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Plante 3 - Compositions -->
+                        <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="group">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-2xl">
+                                    <!-- Image -->
+                                    <div class="relative overflow-hidden aspect-[4/3]">
+                                        <img src="https://picsum.photos/600/450?random=82"
+                                             alt="Compositions"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute top-4 right-4 bg-olive text-white px-4 py-2 rounded-full text-sm font-bold">
+                                            Disponible
+                                        </div>
+                                    </div>
+                                    <!-- Contenu -->
+                                    <div class="p-6 sm:p-8">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                                            Compositions
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">
+                                            Assemblages harmonieux de plusieurs plantes pour un effet décoratif optimal.
+                                        </p>
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <span class="text-sm text-gray-500">Créations sur mesure</span>
+                                            <span class="text-olive font-bold text-lg">Sur devis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Plante 4 - Plantes XXL -->
+                        <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="group">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-2xl">
+                                    <!-- Image -->
+                                    <div class="relative overflow-hidden aspect-[4/3]">
+                                        <img src="https://picsum.photos/600/450?random=83"
+                                             alt="Plantes XXL"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute top-4 right-4 bg-olive text-white px-4 py-2 rounded-full text-sm font-bold">
+                                            Disponible
+                                        </div>
+                                    </div>
+                                    <!-- Contenu -->
+                                    <div class="p-6 sm:p-8">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                                            Plantes XXL
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">
+                                            Plantes de grande taille pour un impact visuel maximal lors de vos événements.
+                                        </p>
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <span class="text-sm text-gray-500">Grand format</span>
+                                            <span class="text-olive font-bold text-lg">Sur devis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Plante 5 - Plantes fleuries -->
+                        <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="group">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-2xl">
+                                    <!-- Image -->
+                                    <div class="relative overflow-hidden aspect-[4/3]">
+                                        <img src="https://picsum.photos/600/450?random=84"
+                                             alt="Plantes fleuries"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute top-4 right-4 bg-olive text-white px-4 py-2 rounded-full text-sm font-bold">
+                                            Saisonnier
+                                        </div>
+                                    </div>
+                                    <!-- Contenu -->
+                                    <div class="p-6 sm:p-8">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                                            Plantes fleuries
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">
+                                            Ajoutez de la couleur et de la vie à vos événements avec nos plantes fleuries.
+                                        </p>
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <span class="text-sm text-gray-500">Selon saison</span>
+                                            <span class="text-olive font-bold text-lg">Sur devis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Plante 6 - Plantes suspendues -->
+                        <div class="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] px-4">
+                            <div class="group">
+                                <div class="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-2xl">
+                                    <!-- Image -->
+                                    <div class="relative overflow-hidden aspect-[4/3]">
+                                        <img src="https://picsum.photos/600/450?random=85"
+                                             alt="Plantes suspendues"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute top-4 right-4 bg-olive text-white px-4 py-2 rounded-full text-sm font-bold">
+                                            Disponible
+                                        </div>
+                                    </div>
+                                    <!-- Contenu -->
+                                    <div class="p-6 sm:p-8">
+                                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                                            Plantes suspendues
+                                        </h3>
+                                        <p class="text-gray-600 mb-4 leading-relaxed">
+                                            Optimisez l'espace et créez du relief avec nos plantes suspendues.
+                                        </p>
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <span class="text-sm text-gray-500">Installation incluse</span>
+                                            <span class="text-olive font-bold text-lg">Sur devis</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boutons de navigation -->
+                <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 z-10 bg-white hover:bg-olive group rounded-full p-3 sm:p-4 shadow-xl border-2 border-gray-200 hover:border-olive transition-all duration-300">
+                    <svg class="w-6 h-6 text-gray-900 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 z-10 bg-white hover:bg-olive group rounded-full p-3 sm:p-4 shadow-xl border-2 border-gray-200 hover:border-olive transition-all duration-300">
+                    <svg class="w-6 h-6 text-gray-900 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Indicateurs de slides -->
+            <div class="flex justify-center gap-2 mt-8">
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-olive transition-all duration-300" data-slide="0"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="1"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="3"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="4"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="5"></button>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-12 sm:mt-16">
+                <p class="text-lg text-gray-600 mb-6">
+                    Vous ne trouvez pas ce que vous cherchez ?
+                </p>
+                <a href="{{ route('contact') }}"
+                   class="inline-flex items-center gap-3 px-8 py-4 bg-olive text-white font-bold text-lg rounded-full shadow-lg hover:bg-green-800 transition-all duration-300">
+                    <span>Contactez-nous pour un devis personnalisé</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
 <!-- Section Avantages -->
     <section class="py-12 sm:py-16 md:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -215,7 +451,7 @@
                             Économique
                         </h3>
                         <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                            Pas d'investissement initial, payez uniquement la durée d'utilisation
+                            Payez uniquement la durée d'utilisation
                         </p>
                     </div>
                 </div>
@@ -291,11 +527,11 @@
                     Comment ça marche ?
                 </h2>
                 <p class="text-xl sm:text-2xl text-gray-600 max-w-2xl mx-auto font-light">
-                    Un processus simple en 4 étapes
+                    Un processus simple en 3 étapes
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                 <!-- Étape 1 -->
                 <div class="group">
                     <div class="bg-white rounded-3xl p-8 sm:p-10 h-full border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-xl">
@@ -346,23 +582,6 @@
                         </p>
                     </div>
                 </div>
-
-                <!-- Étape 4 -->
-                <div class="group">
-                    <div class="bg-white rounded-3xl p-8 sm:p-10 h-full border border-gray-200 hover:border-olive/50 transition-all duration-300 hover:shadow-xl">
-                        <div class="mb-8">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-olive/10 rounded-2xl group-hover:bg-olive group-hover:scale-110 transition-all duration-300">
-                                <span class="text-2xl font-bold text-olive group-hover:text-white">04</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                            Profitez
-                        </h3>
-                        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                            Nous gérons l'entretien, vous profitez
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -409,4 +628,141 @@
         }
     }
 </style>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        // Fonction pour obtenir le nombre de slides visibles selon la largeur d'écran
+        function getSlidesPerView() {
+            if (window.innerWidth >= 1024) return 3; // lg
+            if (window.innerWidth >= 640) return 2;  // sm
+            return 1; // mobile
+        }
+
+        // Fonction pour mettre à jour la position du carousel
+        function updateCarousel() {
+            const slidesPerView = getSlidesPerView();
+            const maxSlide = totalSlides - slidesPerView;
+
+            // Limiter currentSlide
+            if (currentSlide > maxSlide) {
+                currentSlide = maxSlide;
+            }
+            if (currentSlide < 0) {
+                currentSlide = 0;
+            }
+
+            const slideWidth = 100 / slidesPerView;
+            const offset = -(currentSlide * slideWidth);
+            track.style.transform = `translateX(${offset}%)`;
+
+            // Mettre à jour les indicateurs
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.remove('bg-gray-300');
+                    indicator.classList.add('bg-olive');
+                } else {
+                    indicator.classList.remove('bg-olive');
+                    indicator.classList.add('bg-gray-300');
+                }
+            });
+
+            // Gérer la visibilité des boutons
+            prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
+            nextBtn.style.opacity = currentSlide >= maxSlide ? '0.5' : '1';
+            nextBtn.style.cursor = currentSlide >= maxSlide ? 'not-allowed' : 'pointer';
+        }
+
+        // Navigation précédent
+        prevBtn.addEventListener('click', function() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        });
+
+        // Navigation suivant
+        nextBtn.addEventListener('click', function() {
+            const maxSlide = totalSlides - getSlidesPerView();
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                updateCarousel();
+            }
+        });
+
+        // Indicateurs cliquables
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Gestion du redimensionnement de la fenêtre
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                updateCarousel();
+            }, 250);
+        });
+
+        // Support du swipe sur mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        track.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left (next)
+                    const maxSlide = totalSlides - getSlidesPerView();
+                    if (currentSlide < maxSlide) {
+                        currentSlide++;
+                        updateCarousel();
+                    }
+                } else {
+                    // Swipe right (prev)
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        updateCarousel();
+                    }
+                }
+            }
+        }
+
+        // Navigation au clavier
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            }
+        });
+
+        // Initialisation
+        updateCarousel();
+    });
+</script>
 @endsection
