@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'August Cactus - Pépinière')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"> <!--Le favicon principal au format .ico pour tous les navigateurs-->
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}"> <!--Une alternative au format PNG pour les navigateurs modernes-->
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}"> <!--Pour les appareils Apple (iPhone, iPad)-->
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,49 +57,35 @@
             object-position: center !important;
         }
 
-        /* Images catalogue et services - remplir le conteneur (pour cartes standard) */
+        /* Images - styles consolidés */
         .card img,
         .service-card img,
         .catalogue-card img,
         .plante-card img,
-        .product-card img {
+        .product-card img,
+        .image-container img,
+        .card-image img,
+        .service-image img,
+        .catalogue-image img,
+        .aspect-square img,
+        .aspect-video img,
+        .aspect-portrait img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
         }
 
-        /* Conteneurs d'images carrés */
+        /* Conteneurs d'images avec aspect ratio */
         .image-container,
         .card-image,
         .service-image,
-        .catalogue-image {
+        .catalogue-image,
+        .aspect-square {
             width: 100%;
             aspect-ratio: 1 / 1;
             overflow: hidden;
             position: relative;
-        }
-
-        .image-container img,
-        .card-image img,
-        .service-image img,
-        .catalogue-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* Ratio d'aspect pour images */
-        .aspect-square {
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-        }
-
-        .aspect-square img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         .aspect-video {
@@ -102,69 +93,12 @@
             overflow: hidden;
         }
 
-        .aspect-video img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .aspect-portrait {
             aspect-ratio: 3 / 4;
             overflow: hidden;
         }
 
-        .aspect-portrait img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Grille responsive pour cartes */
-        .grid-cards {
-            display: grid;
-            gap: 1rem;
-        }
-
-        @media (max-width: 639px) {
-            .grid-cards {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
-
-        @media (min-width: 640px) and (max-width: 1023px) {
-            .grid-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .grid-cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* Hero images responsive */
-        @media (max-width: 639px) {
-            .hero-image, .banner-image {
-                max-height: 50vh;
-                object-fit: cover;
-                width: 100%;
-            }
-        }
-
-        @media (min-width: 640px) and (max-width: 1023px) {
-            .hero-image, .banner-image {
-                max-height: 60vh;
-                object-fit: cover;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-image, .banner-image {
-                max-height: 70vh;
-                object-fit: cover;
-            }
-        }
+        /* Note: .grid-cards et hero-image utilisent les utilities Tailwind dans le HTML */
 
         /* Lazy loading avec apparition progressive */
         img[loading="lazy"]:not(.loaded) {
@@ -176,17 +110,36 @@
             transition: opacity 0.3s ease-in-out;
         }
 
-        /* ===== ACCESSIBILITÉ ===== */
-        .nav-link:focus-visible,
-        .mobile-nav-link:focus-visible,
-        .mobile-dropdown-btn:focus-visible {
-            outline: 2px solid #0A2D19;
+        /* ===== NAVIGATION - SUPPRESSION BORDURES ===== */
+        /* Suppression complète des bordures sur tous les éléments de navigation */
+        nav *,
+        nav *:hover,
+        nav *:focus,
+        nav *:active,
+        .dropdown-menu *,
+        .dropdown-menu *:hover,
+        .dropdown-menu *:focus,
+        .dropdown-menu *:active {
+            outline: 0 !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            text-decoration: none !important;
+            --tw-ring-shadow: 0 0 #0000 !important;
+            --tw-shadow: 0 0 #0000 !important;
+        }
+
+        /* Bordure d'accessibilité pour navigation clavier uniquement */
+        body.user-is-tabbing nav a:focus,
+        body.user-is-tabbing nav button:focus,
+        body.user-is-tabbing .dropdown-menu a:focus {
+            outline: 2px solid #1A4B2E !important;
             outline-offset: 3px;
             border-radius: 6px;
         }
 
         /* Touch targets WCAG */
-        .mobile-nav-link, .mobile-dropdown-btn {
+        .mobile-nav-link,
+        .mobile-dropdown-btn {
             min-height: 44px;
         }
 
@@ -202,7 +155,7 @@
             position: absolute;
             top: -40px;
             left: 0;
-            background: #0A2D19;
+            background: #1A4B2E;
             color: white;
             padding: 8px;
             text-decoration: none;
@@ -233,8 +186,9 @@
                 <div class="hidden md:flex space-x-4 lg:space-x-6 items-center">
                     <!-- Dropdown Nos plantes -->
                     <div class="relative dropdown-container">
-                        <button
-                            class="nav-link transition-colors duration-300 flex items-center gap-1 bg-transparent border-none cursor-pointer {{ request()->routeIs('plantes.*') ? 'font-semibold border-b-2 border-olive' : '' }}"
+                        <a
+                            href="{{ route('plantes.catalogue') }}"
+                            class="nav-link transition-colors duration-300 flex items-center gap-1 {{ request()->routeIs('plantes.*') ? 'font-semibold border-b-2 border-olive' : '' }}"
                             aria-expanded="false"
                             aria-haspopup="true"
                             id="plantes-menu-btn"
@@ -243,21 +197,22 @@
                             <svg class="dropdown-arrow w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
-                        </button>
+                        </a>
                         <!-- Dropdown menu -->
-                        <div id="plantes-menu" class="dropdown-menu absolute left-0 mt-2 w-48 lg:w-52 bg-white/95 backdrop-blur-md shadow-xl border border-gray-100 rounded-xl opacity-0 invisible transition-all duration-300 z-50" role="menu" aria-labelledby="plantes-menu-btn">
-                            <a href="{{ route('plantes.catalogue') }}?categorie=cactus" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive rounded-t-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Cactus</a>
-                            <a href="{{ route('plantes.catalogue') }}?categorie=succulentes" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Succulentes</a>
-                            <a href="{{ route('plantes.catalogue') }}?categorie=diverses" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive rounded-b-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Plantes Diverses</a>
+                        <div id="plantes-menu" class="dropdown-menu absolute left-0 mt-2 w-48 lg:w-52 bg-white shadow-xl border border-gray-100 rounded-xl opacity-0 invisible transition-all duration-300 z-50" role="menu" aria-labelledby="plantes-menu-btn">
+                            <a href="{{ route('plantes.catalogue') }}?categorie=cactus" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Cactus</a>
+                            <a href="{{ route('plantes.catalogue') }}?categorie=succulentes" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Succulentes</a>
+                            <a href="{{ route('plantes.catalogue') }}?categorie=diverses" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 rounded-b-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Plantes Diverses</a>
                         </div>
                     </div>
 
-                    <a href="{{ route('galerie') }}" class="nav-link transition-all duration-300 hover:scale-105 {{ request()->routeIs('galerie') ? 'font-semibold border-b-2 border-olive' : '' }}">Galerie</a>
+                    <a href="{{ route('galerie') }}" class="nav-link transition-all duration-300 {{ request()->routeIs('galerie') ? 'font-semibold border-b-2 border-olive' : '' }}">Galerie</a>
 
                     <!-- Dropdown Services -->
                     <div class="relative dropdown-container">
-                        <button
-                            class="nav-link transition-colors duration-300 flex items-center gap-1 bg-transparent border-none cursor-pointer {{ request()->routeIs('services', 'amenagement', 'location') ? 'font-semibold border-b-2 border-olive' : '' }}"
+                        <a
+                            href="{{ route('services') }}"
+                            class="nav-link transition-colors duration-300 flex items-center gap-1 {{ request()->routeIs('services', 'amenagement', 'location') ? 'font-semibold border-b-2 border-olive' : '' }}"
                             aria-expanded="false"
                             aria-haspopup="true"
                             id="services-menu-btn"
@@ -266,17 +221,17 @@
                             <svg class="dropdown-arrow w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
-                        </button>
+                        </a>
                         <!-- Dropdown menu -->
-                        <div id="services-menu" class="dropdown-menu absolute left-0 mt-2 w-56 lg:w-60 bg-white/95 backdrop-blur-md shadow-xl border border-gray-100 rounded-xl opacity-0 invisible transition-all duration-300 z-50" role="menu" aria-labelledby="services-menu-btn">
-                            <a href="{{ route('amenagement') }}" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive rounded-t-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Aménagement</a>
-                            <a href="{{ route('entretien') }}#entretien" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Entretien jardin ou plantes</a>
-                            <a href="{{ route('location') }}" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 hover:text-olive rounded-b-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Location de plante</a>
+                        <div id="services-menu" class="dropdown-menu absolute left-0 mt-2 w-56 lg:w-60 bg-white shadow-xl border border-gray-100 rounded-xl opacity-0 invisible transition-all duration-300 z-50" role="menu" aria-labelledby="services-menu-btn">
+                            <a href="{{ route('amenagement') }}" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 rounded-t-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Aménagement</a>
+                            <a href="{{ route('entretien') }}#entretien" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Entretien jardin ou plantes</a>
+                            <a href="{{ route('location') }}" class="block px-4 py-2.5 md:py-3 text-sm md:text-base text-black hover:bg-olive/10 rounded-b-xl focus:bg-olive/10 focus:text-olive focus:outline-none transition-all duration-200" role="menuitem">Location de plante</a>
                         </div>
                     </div>
 
-                    <a href="{{ route('a-propos') }}" class="nav-link transition-all duration-300 hover:scale-105 {{ request()->routeIs('a-propos') ? 'font-semibold border-b-2 border-olive' : '' }}">À propos</a>
-                    <a href="{{ route('contact') }}" class="nav-link transition-all duration-300 hover:scale-105 {{ request()->routeIs('contact') ? 'font-semibold border-b-2 border-olive' : '' }}">Contact</a>
+                    <a href="{{ route('a-propos') }}" class="nav-link transition-all duration-300 {{ request()->routeIs('a-propos') ? 'font-semibold border-b-2 border-olive' : '' }}">À propos</a>
+                    <a href="{{ route('contact') }}" class="nav-link transition-all duration-300 {{ request()->routeIs('contact') ? 'font-semibold border-b-2 border-olive' : '' }}">Contact</a>
                 </div>
                 <!-- Bouton hamburger mobile -->
                 <button id="mobile-menu-btn" class="md:hidden p-1.5 sm:p-2 rounded-lg hover:bg-white/10 transition-colors duration-300" aria-label="Menu de navigation" aria-expanded="false" aria-controls="mobile-menu">
@@ -332,8 +287,48 @@
 
     <!-- Script pour gérer le changement de couleur de la navbar au scroll et le menu mobile -->
     <script>
-        // Gestion des dropdowns desktop au clavier
+        // ===== DÉTECTION NAVIGATION CLAVIER (Accessibilité) =====
+        // Ajoute la classe 'user-is-tabbing' uniquement si l'utilisateur utilise Tab
+        function handleFirstTab(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('user-is-tabbing');
+                window.removeEventListener('keydown', handleFirstTab);
+                window.addEventListener('mousedown', handleMouseDownOnce);
+            }
+        }
+
+        function handleMouseDownOnce() {
+            document.body.classList.remove('user-is-tabbing');
+            window.removeEventListener('mousedown', handleMouseDownOnce);
+            window.addEventListener('keydown', handleFirstTab);
+        }
+
+        window.addEventListener('keydown', handleFirstTab);
+
+        // Gestion du scroll pour changer la couleur de la navbar avec glassmorphism
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const navbarLogo = document.getElementById('navbar-logo');
+            const scrollPosition = window.scrollY;
+
+            // Après 50px de scroll, la navbar devient avec effet glassmorphism
+            if (scrollPosition > 50) {
+                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+                navbar.classList.remove('bg-transparent');
+                navbarLogo.classList.remove('h-10', 'sm:h-11', 'md:h-12');
+                navbarLogo.classList.add('h-9', 'sm:h-10', 'md:h-11');
+            } else {
+                // Avant 50px, navbar transparente
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+                navbarLogo.classList.add('h-10', 'sm:h-11', 'md:h-12');
+                navbarLogo.classList.remove('h-9', 'sm:h-10', 'md:h-11');
+            }
+        });
+
+        // Initialiser tout au chargement de la page
         document.addEventListener('DOMContentLoaded', function() {
+            // ===== DROPDOWNS DESKTOP =====
             const dropdownButtons = document.querySelectorAll('[aria-haspopup="true"]');
 
             dropdownButtons.forEach(button => {
@@ -414,33 +409,8 @@
                     }
                 });
             });
-        });
 
-        // Gestion du scroll pour changer la couleur de la navbar avec glassmorphism
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            const navbarLogo = document.getElementById('navbar-logo');
-            const scrollPosition = window.scrollY;
-
-            // Après 50px de scroll, la navbar devient avec effet glassmorphism
-            if (scrollPosition > 50) {
-                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-gray-100');
-                navbar.classList.remove('bg-transparent');
-                navbarLogo.classList.remove('h-10', 'sm:h-11', 'md:h-12');
-                navbarLogo.classList.add('h-9', 'sm:h-10', 'md:h-11');
-            } else {
-                // Avant 50px, navbar transparente
-                navbar.classList.add('bg-transparent');
-                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-gray-100');
-                navbarLogo.classList.add('h-10', 'sm:h-11', 'md:h-12');
-                navbarLogo.classList.remove('h-9', 'sm:h-10', 'md:h-11');
-            }
-        });
-
-        // Initialiser l'état au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // Gestion du menu hamburger mobile
+            // ===== MENU MOBILE =====
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -458,6 +428,16 @@
                 // Toggle des icônes hamburger / close
                 hamburgerIcon.classList.toggle('hidden');
                 closeIcon.classList.toggle('hidden');
+
+                // Donner le focus au premier élément du menu quand il s'ouvre
+                if (isExpanded) {
+                    setTimeout(() => {
+                        const firstLink = mobileMenu.querySelector('.mobile-dropdown-btn, .mobile-nav-link');
+                        if (firstLink) {
+                            firstLink.focus();
+                        }
+                    }, 100);
+                }
             });
 
             // Gestion des dropdowns mobiles
@@ -505,7 +485,7 @@
             });
 
             // Focus trap pour le menu mobile
-            function trapFocus(event) {
+            document.addEventListener('keydown', function(event) {
                 const isMenuOpen = !mobileMenu.classList.contains('hidden');
 
                 if (!isMenuOpen) return;
@@ -515,20 +495,17 @@
                     'a[href]:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])'
                 );
 
-                const firstElement = mobileMenuBtn; // Le bouton hamburger
+                const firstElement = mobileMenuBtn;
                 const lastElement = focusableElements[focusableElements.length - 1];
 
                 // Si Tab est pressé
                 if (event.key === 'Tab') {
-                    // Shift+Tab (navigation arrière)
                     if (event.shiftKey) {
                         if (document.activeElement === firstElement) {
                             event.preventDefault();
                             lastElement.focus();
                         }
-                    }
-                    // Tab simple (navigation avant)
-                    else {
+                    } else {
                         if (document.activeElement === lastElement) {
                             event.preventDefault();
                             firstElement.focus();
@@ -544,33 +521,10 @@
                     mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     mobileMenuBtn.focus();
                 }
-            }
-
-            // Activer le focus trap quand le menu est ouvert
-            document.addEventListener('keydown', trapFocus);
-
-            // Donner le focus au premier élément du menu quand il s'ouvre
-            const originalClickHandler = mobileMenuBtn.onclick;
-            mobileMenuBtn.addEventListener('click', function() {
-                // Attendre que le menu soit visible
-                setTimeout(() => {
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        // Focus sur le premier lien du menu
-                        const firstLink = mobileMenu.querySelector('.mobile-dropdown-btn, .mobile-nav-link');
-                        if (firstLink) {
-                            firstLink.focus();
-                        }
-                    }
-                }, 100);
             });
-        });
 
-        // ===== OPTIMISATION IMAGES RESPONSIVE =====
-
-        // Ajouter la classe 'loaded' aux images lazy après chargement
-        document.addEventListener('DOMContentLoaded', function() {
+            // ===== LAZY LOADING IMAGES =====
             const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-
             lazyImages.forEach(img => {
                 if (img.complete) {
                     img.classList.add('loaded');
@@ -589,7 +543,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-olive to-olive-dark text-white py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
+    <footer class="bg-olive text-white py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
         <!-- Effet décoratif subtil -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute top-0 right-0 w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-white rounded-full blur-3xl"></div>
@@ -601,7 +555,7 @@
                 <!-- Branding Section -->
                 <div class="sm:col-span-2 lg:col-span-4">
                     <div class="mb-3 sm:mb-4 md:mb-6">
-                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 md:mb-4" style="font-family: 'Playfair Display', serif;">August Cactus - Pépinière</h3>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 md:mb-4 font-serif">August Cactus - Pépinière</h3>
                     </div>
                     <p class="text-white/80 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 md:mb-6 max-w-xs">
                         Votre pépinière de confiance depuis 30 ans. Spécialisés dans les cactus, succulentes et plantes diverses.
@@ -682,9 +636,8 @@
             <div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-4 sm:mb-6 md:mb-8"></div>
 
             <!-- Copyright -->
-            <div class="flex flex-col sm:flex-row justify-between items-center text-xs sm:text-sm text-white/60 space-y-2 sm:space-y-0 text-center sm:text-left">
+            <div class="flex justify-center items-center text-xs sm:text-sm text-white/60">
                 <p>&copy; 2025 August Cactus. Tous droits réservés.</p>
-                <p class="hidden sm:block">Fait avec passion en Martinique</p>
             </div>
         </div>
     </footer>

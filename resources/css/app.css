@@ -10,7 +10,8 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     /* Couleurs custom August Cactus */
-    --color-olive: #0A2D19;
-    --color-olive-dark: #061A0F;
-    --color-yellow: #FFC125;
+    --color-olive: #1A4B2E;
+    --color-white: #FFFFFF;
+    --color-black: #1A1A1A;
+    --color-gray: #2C2C2C;
 }
