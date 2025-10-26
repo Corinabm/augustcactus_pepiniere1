@@ -48,6 +48,16 @@
             opacity: 1 !important;
         }
 
+        /* Navbar visible dès le chargement */
+        #navbar {
+            opacity: 1;
+        }
+
+        /* Transitions uniquement après le chargement */
+        #navbar.loaded {
+            transition: top 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
         /* Images avec position absolute - pour sections index (services, catalogue) */
         a[class*="group"] img[class*="absolute"],
         .group img[class*="absolute"] {
@@ -173,8 +183,11 @@
     <!-- Skip link pour accessibilité -->
     <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
+    <!-- Barre d'annonce -->
+    <x-annonce-bar />
+
     <!-- Navigation fixe -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500">
+    <nav id="navbar" class="fixed left-0 right-0 z-40">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14 sm:h-16 md:h-14">
                 <div class="flex-shrink-0">
@@ -305,29 +318,68 @@
 
         window.addEventListener('keydown', handleFirstTab);
 
-        // Gestion du scroll pour changer la couleur de la navbar avec glassmorphism
-        window.addEventListener('scroll', function() {
+        // Gestion simple de la navbar
+        function updateNavbarPosition() {
             const navbar = document.getElementById('navbar');
             const navbarLogo = document.getElementById('navbar-logo');
+            const announcementBar = document.getElementById('announcement-bar');
             const scrollPosition = window.scrollY;
 
-            // Après 50px de scroll, la navbar devient avec effet glassmorphism
-            if (scrollPosition > 50) {
+            if (!navbar) return;
+
+            // Calculer la hauteur de la barre d'annonce si visible
+            const announcementHeight = announcementBar && announcementBar.style.display !== 'none'
+                ? announcementBar.offsetHeight
+                : 0;
+
+            // Au scroll, la navbar remonte
+            if (scrollPosition > 10) {
+                navbar.style.top = '0';
                 navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
                 navbar.classList.remove('bg-transparent');
-                navbarLogo.classList.remove('h-10', 'sm:h-11', 'md:h-12');
-                navbarLogo.classList.add('h-9', 'sm:h-10', 'md:h-11');
+                if (navbarLogo) {
+                    navbarLogo.classList.remove('h-10', 'sm:h-11', 'md:h-12');
+                    navbarLogo.classList.add('h-9', 'sm:h-10', 'md:h-11');
+                }
             } else {
-                // Avant 50px, navbar transparente
+                // En haut de page, navbar sous la barre d'annonce
+                navbar.style.top = announcementHeight + 'px';
                 navbar.classList.add('bg-transparent');
                 navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
-                navbarLogo.classList.add('h-10', 'sm:h-11', 'md:h-12');
-                navbarLogo.classList.remove('h-9', 'sm:h-10', 'md:h-11');
+                if (navbarLogo) {
+                    navbarLogo.classList.add('h-10', 'sm:h-11', 'md:h-12');
+                    navbarLogo.classList.remove('h-9', 'sm:h-10', 'md:h-11');
+                }
             }
+        }
+
+        // Initialisation - positionner immédiatement sans transition
+        (function() {
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                // Positionner immédiatement AVANT d'activer les transitions
+                updateNavbarPosition();
+
+                // Activer les transitions APRÈS le positionnement initial
+                setTimeout(function() {
+                    navbar.classList.add('loaded');
+                }, 50);
+            }
+        })();
+
+        // Écouter le scroll
+        window.addEventListener('scroll', updateNavbarPosition, { passive: true });
+
+        // Écouter la fermeture de la barre d'annonce
+        window.addEventListener('announcement-closed', function() {
+            setTimeout(updateNavbarPosition, 10);
         });
 
         // Initialiser tout au chargement de la page
         document.addEventListener('DOMContentLoaded', function() {
+            // Ré-initialiser la position de la navbar au cas où
+            updateNavbarPosition();
+
             // ===== DROPDOWNS DESKTOP =====
             const dropdownButtons = document.querySelectorAll('[aria-haspopup="true"]');
 
