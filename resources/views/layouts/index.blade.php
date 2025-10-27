@@ -52,66 +52,90 @@
         </div>
     </section>
 
-    <!-- Section Services - Bento Grid -->
-    <section class="py-32 bg-white">
+    <!-- Section Services -->
+    <section class="py-16 sm:py-24 lg:py-32 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Titre avec layout moderne -->
-            <div class="max-w-3xl mb-20">
-                <h2 class="text-5xl md:text-7xl font-bold text-olive mb-6 leading-tight">
+            <!-- Titre et sous-titre -->
+            <div class="mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-3 sm:mb-4 leading-tight">
                     Nos Services
                 </h2>
-                <p class="text-xl text-gray-600 font-light">
+                <p class="text-base sm:text-lg md:text-xl text-gray-500 font-light max-w-2xl">
                     De l'aménagement à l'entretien, nous créons des espaces verts qui vous ressemblent
                 </p>
             </div>
 
-            <!-- Bento Grid asymétrique -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-                <!-- Service 1 - Grande carte (prend 2 colonnes sur desktop) -->
-                <a href="{{ route('amenagement') }}" class="group relative lg:col-span-2 lg:row-span-2 rounded-3xl overflow-hidden bg-olive hover:shadow-2xl transition-all duration-500 min-h-[400px] md:min-h-[500px]">
-                    <img src="{{ asset('images/service-amenagement.jpg') }}" alt="Aménagement Paysager" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-                        <h3 class="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">Aménagement</h3>
-                        <p class="text-white/90 text-lg mb-6 max-w-xl">Sublimez votre extérieur avec un aménagement pensé pour vous</p>
-                        <div class="flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform">
-                            <span>En savoir plus</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            <!-- Grid responsive des cartes de services -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Carte 1 - Aménagement -->
+                <a href="{{ route('amenagement') }}" class="group flex flex-col">
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] mb-4 sm:mb-6">
+                        <!-- Image de fond -->
+                        <img src="{{ asset('images/service-amenagement.jpg') }}" alt="Aménagement Paysager" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+                        <!-- Bouton fléché en haut à droite -->
+                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17"></path>
                             </svg>
                         </div>
                     </div>
-                </a>
 
-                <!-- Service 2 - Carte moyenne -->
-                <a href="{{ route('location') }}" class="group relative rounded-3xl overflow-hidden bg-olive hover:shadow-2xl transition-all duration-500 min-h-[300px]">
-                    <img src="{{ asset('images/service-location.jpg') }}" alt="Location de Plantes" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">Location de Plantes</h3>
-                        <p class="text-white/80 text-sm mb-4">Louez nos plantes magnifiques pour sublimer vos espaces</p>
-                        <div class="flex items-center text-white text-sm font-semibold group-hover:translate-x-2 transition-transform">
-                            <span>Découvrir</span>
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </div>
+                    <!-- Description -->
+                    <div class="text-center sm:text-left px-2 sm:px-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-black mb-2 font-sans">Aménagement</h3>
+                        <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Sublimez votre extérieur avec un aménagement paysager pensé pour vous</p>
                     </div>
                 </a>
 
-                <!-- Service 3 - Carte moyenne -->
-                <a href="{{ route('services') }}#entretien" class="group relative rounded-3xl overflow-hidden bg-olive hover:shadow-2xl transition-all duration-500 min-h-[300px]">
-                    <img src="{{ asset('images/service-entretien.jpg') }}" alt="Décoration Végétale" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3 leading-tight">Entretien jardin ou plantes</h3>
-                        <p class="text-white/80 text-sm mb-4">Confiez-nous l'entretien de vos espaces verts et profitez du résultat</p>
-                        <div class="flex items-center text-white text-sm font-semibold group-hover:translate-x-2 transition-transform">
-                            <span>Découvrir</span>
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                <!-- Carte 2 - Location de plantes -->
+                <a href="{{ route('location') }}" class="group flex flex-col">
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] mb-4 sm:mb-6">
+                        <!-- Image de fond -->
+                        <img src="{{ asset('images/service-location.jpg') }}" alt="Location de Plantes" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+                        <!-- Bouton fléché en haut à droite -->
+                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17"></path>
                             </svg>
                         </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="text-center sm:text-left px-2 sm:px-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-black mb-2 font-sans">Location de plantes</h3>
+                        <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Louez nos plantes pour événements ou espaces professionnels</p>
+                    </div>
+                </a>
+
+                <!-- Carte 3 - Entretien -->
+                <a href="{{ route('services') }}#entretien" class="group flex flex-col">
+                    <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] mb-4 sm:mb-6">
+                        <!-- Image de fond -->
+                        <img src="{{ asset('images/service-entretien.jpg') }}" alt="Entretien" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+                        <!-- Bouton fléché en haut à droite -->
+                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="text-center sm:text-left px-2 sm:px-0">
+                        <h3 class="text-lg sm:text-xl font-bold text-black mb-2 font-sans">Entretien</h3>
+                        <p class="text-sm sm:text-base text-gray-500 leading-relaxed">Confiez-nous l'entretien de vos jardins et plantes en toute sérénité</p>
                     </div>
                 </a>
             </div>
@@ -141,9 +165,9 @@
 
                 <!-- CTA secondaire -->
                 <div class="flex justify-start md:justify-end">
-                    <a href="{{ route('a-propos') }}" class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300">
+                    <a href="{{ route('a-propos') }}" class="group inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300">
                         <span>Notre histoire</span>
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
                     </a>
@@ -156,12 +180,12 @@
                 <div class="group md:col-span-2 backdrop-blur-xl bg-white/10 rounded-3xl p-10 md:p-12 border border-white/20 hover:bg-white/15 transition-all duration-500">
                     <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
                         <div>
-                            <div class="text-7xl md:text-8xl lg:text-9xl font-bold text-yellow mb-4 leading-none">99%</div>
+                            <div class="text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-4 leading-none">99%</div>
                             <p class="text-2xl md:text-3xl text-white font-light">Clients Satisfaits</p>
                             <p class="text-white/60 mt-3 max-w-md">Une satisfaction client qui témoigne de notre engagement qualité</p>
                         </div>
                         <div class="mt-6 md:mt-0">
-                            <svg class="w-16 h-16 md:w-24 md:h-24 text-yellow/30" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-16 h-16 md:w-24 md:h-24 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                             </svg>
                         </div>
@@ -177,21 +201,21 @@
 
                 <!-- Stat 3 - Moyenne avec badge (1 colonne) -->
                 <div class="group backdrop-blur-xl bg-white/10 rounded-3xl p-8 md:p-10 border border-white/20 hover:bg-white/15 transition-all duration-500">
-                    <div class="inline-flex items-center px-4 py-2 bg-yellow/20 border border-yellow/30 rounded-full mb-6">
-                        <span class="text-yellow text-sm font-bold">Depuis 1995</span>
+                    <div class="inline-flex items-center px-4 py-2 bg-white/20 border border-white/30 rounded-full mb-6">
+                        <span class="text-white text-sm font-bold">Depuis 1995</span>
                     </div>
                     <div class="text-6xl md:text-7xl font-bold text-white mb-3 leading-none">30 ans</div>
                     <p class="text-xl text-white font-light">d'Expertise</p>
                 </div>
 
                 <!-- Stat 4 - Extra info (2 colonnes sur md, 4 colonnes sur lg) -->
-                <div class="group md:col-span-2 lg:col-span-4 backdrop-blur-xl bg-gradient-to-br from-yellow/20 to-yellow/5 rounded-3xl p-8 md:p-10 border border-yellow/30 hover:border-yellow/50 transition-all duration-500">
+                <div class="group md:col-span-2 lg:col-span-4 backdrop-blur-xl bg-gradient-to-br from-white/20 to-white/5 rounded-3xl p-8 md:p-10 border border-white/30 hover:border-white/50 transition-all duration-500">
                     <div class="flex flex-col md:flex-row items-start justify-between gap-6">
                         <div class="flex-1">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Certification "Coeur Martinique"</h3>
                             <p class="text-white/80 text-lg">Fiers d'être certifiés par la Chambre d'agriculture Martinique, nous valorisons le savoir-faire martiniquais</p>
                         </div>
-                        <svg class="w-12 h-12 md:w-16 md:h-16 text-yellow/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-12 h-12 md:w-16 md:h-16 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
@@ -206,15 +230,15 @@
             <!-- Header moderne avec layout split -->
             <div class="grid md:grid-cols-2 gap-12 items-start md:items-end mb-20">
                 <div>
-                    <h2 class="text-5xl md:text-7xl font-bold text-olive mb-6 leading-tight">
-                        Notre Catalogue
+                    <h2 class="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight">
+                        Notre catalogue
                     </h2>
                     <p class="text-xl text-gray-600 font-light leading-relaxed">
                         Plus de 680 variétés sélectionnées avec soin pour embellir votre quotidien
                     </p>
                 </div>
                 <div class="flex justify-center md:justify-end">
-                    <a href="{{ route('plantes.catalogue') }}" class="group inline-flex items-center px-8 py-4 bg-olive text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <a href="{{ route('plantes.catalogue') }}" class="group inline-flex items-center px-8 py-4 bg-olive text-white font-semibold rounded-full shadow-lg">
                         <span>Voir tout le catalogue</span>
                         <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -223,58 +247,77 @@
                 </div>
             </div>
 
-            <!-- Grid des catégories -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Catégorie 1 - Cactus -->
-                <a href="{{ route('plantes.catalogue') }}?categorie=cactus" class="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[450px]">
-                    <img src="{{ asset('images/categorie-cactus.jpg') }}" alt="Cactus" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-olive/90 via-olive/40 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <div class="inline-flex items-center px-4 py-2 bg-yellow rounded-full mb-4">
-                            <span class="text-olive text-sm font-bold">Le plus populaire</span>
-                        </div>
-                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">Cactus</h3>
-                        <p class="text-white/90 mb-4">Des variétés résistantes et fascinantes, parfaites pour tous les espaces</p>
-                        <div class="flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform">
-                            <span>Explorer</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <!-- Layout avec Plante du Mois à gauche et autres cartes à droite -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Gauche - La Plante du Mois -->
+                <a href="{{ route('plantes.catalogue') }}" class="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[500px]">
+                    <img src="{{ asset('images/plante-du-mois.jpg') }}" alt="Plante du Mois" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">Plante du mois</h3>
+                        <p class="text-white/90 text-base md:text-lg mb-6">Chaque mois, nous mettons en avant une espèce rare ou particulièrement remarquable de notre collection</p>
+                        <div class="flex items-center text-white font-semibold text-lg group-hover:translate-x-2 transition-transform">
+                            <span>Voir la sélection</span>
+                            <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                             </svg>
                         </div>
                     </div>
                 </a>
 
-                <!-- Catégorie 2 - Succulentes -->
-                <a href="{{ route('plantes.catalogue') }}?categorie=succulentes" class="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[450px]">
-                    <img src="{{ asset('images/categorie-succulentes.jpg') }}" alt="Succulentes" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">Succulentes</h3>
-                        <p class="text-white/90 mb-4">Élégantes et faciles d'entretien</p>
-                        <div class="flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform">
-                            <span>Découvrir</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
+                <!-- Droite - Grid des 3 autres cartes -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Catégorie 1 - Cactus -->
+                    <a href="{{ route('plantes.catalogue') }}?categorie=cactus" class="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[240px]">
+                        <img src="{{ asset('images/categorie-cactus.jpg') }}" alt="Cactus" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-olive/90 via-olive/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="inline-flex items-center px-3 py-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full mb-3">
+                                <span class="text-white text-xs font-bold">Le plus populaire</span>
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">Cactus</h3>
+                            <p class="text-white/80 text-sm mb-3">Des variétés résistantes et fascinantes</p>
+                            <div class="flex items-center text-white text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                                <span>Explorer</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-                <!-- Catégorie 3 - Plantes Diverses -->
-                <a href="{{ route('plantes.catalogue') }}?categorie=diverses" class="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[450px]">
-                    <img src="{{ asset('images/categorie-diverses.jpg') }}" alt="Plantes Diverses" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-3 leading-tight">Plantes Diverses</h3>
-                        <p class="text-white/90 mb-4">Tropicales, fleuries et plus encore</p>
-                        <div class="flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform">
-                            <span>Découvrir</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
+                    <!-- Catégorie 2 - Succulentes -->
+                    <a href="{{ route('plantes.catalogue') }}?categorie=succulentes" class="group relative rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[240px]">
+                        <img src="{{ asset('images/categorie-succulentes.jpg') }}" alt="Succulentes" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">Succulentes</h3>
+                            <p class="text-white/80 text-sm mb-3">Élégantes et faciles d'entretien</p>
+                            <div class="flex items-center text-white text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                                <span>Découvrir</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+
+                    <!-- Catégorie 3 - Plantes Diverses (prend toute la largeur sur tablette/desktop) -->
+                    <a href="{{ route('plantes.catalogue') }}?categorie=diverses" class="group relative sm:col-span-2 rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 min-h-[240px]">
+                        <img src="{{ asset('images/categorie-diverses.jpg') }}" alt="Plantes Diverses" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 leading-tight">Plantes diverses</h3>
+                            <p class="text-white/80 text-sm mb-3">Tropicales, fleuries et plus encore pour créer votre jardin unique</p>
+                            <div class="flex items-center text-white text-sm font-semibold group-hover:translate-x-2 transition-transform">
+                                <span>Découvrir</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -284,7 +327,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header avec layout moderne -->
             <div class="mb-20">
-                <h2 class="text-5xl md:text-7xl font-bold text-olive mb-6 leading-tight">
+                <h2 class="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight">
                     Venez nous rendre visite
                 </h2>
                 <p class="text-xl text-gray-600 font-light max-w-2xl">
@@ -356,9 +399,9 @@
                                         <span class="group-hover:underline">augustcactus@gmail.com</span>
                                     </a>
                                 </div>
-                                <a href="{{ route('contact') }}" class="mt-6 inline-flex items-center px-6 py-3 bg-olive text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300 transform hover:scale-105">
+                                <a href="{{ route('contact') }}" class="group mt-6 inline-flex items-center px-6 py-3 bg-olive text-white font-semibold rounded-full">
                                     <span>Formulaire de contact</span>
-                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                     </svg>
                                 </a>
