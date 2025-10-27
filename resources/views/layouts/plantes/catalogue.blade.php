@@ -12,7 +12,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
                 <!-- En-tête moderne -->
                 <div class="max-w-4xl mb-10 sm:mb-12">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-olive mb-4 sm:mb-6 leading-tight">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-4 sm:mb-6 leading-tight">
                         {{ $titre }}
                     </h1>
                     <p class="text-lg sm:text-xl text-gray-600 font-light leading-relaxed">
@@ -30,22 +30,24 @@
                         <span class="text-sm sm:text-base">Toutes</span>
                     </a>
 
+                    <a href="{{ route('plantes.catalogue', ['categorie' => 'plante-du-mois']) }}"
+                       class="group inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 {{ request('categorie') == 'plante-du-mois' ? 'bg-olive text-white shadow-lg shadow-olive/30' : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-olive hover:text-olive' }}">
+                        <span class="text-sm sm:text-base">Plante du mois</span>
+                    </a>
+
                     <a href="{{ route('plantes.catalogue', ['categorie' => 'cactus']) }}"
                        class="group inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 {{ request('categorie') == 'cactus' ? 'bg-olive text-white shadow-lg shadow-olive/30' : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-olive hover:text-olive' }}">
-                        <span class="text-xl sm:text-2xl mr-2">🌵</span>
                         <span class="text-sm sm:text-base">Cactus</span>
                     </a>
 
                     <a href="{{ route('plantes.catalogue', ['categorie' => 'succulentes']) }}"
                        class="group inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 {{ request('categorie') == 'succulentes' ? 'bg-olive text-white shadow-lg shadow-olive/30' : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-olive hover:text-olive' }}">
-                        <span class="text-xl sm:text-2xl mr-2">🪴</span>
                         <span class="text-sm sm:text-base">Succulentes</span>
                     </a>
 
                     <a href="{{ route('plantes.catalogue', ['categorie' => 'diverses']) }}"
                        class="group inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 {{ request('categorie') == 'diverses' ? 'bg-olive text-white shadow-lg shadow-olive/30' : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-olive hover:text-olive' }}">
-                        <span class="text-xl sm:text-2xl mr-2">🌿</span>
-                        <span class="text-sm sm:text-base">Plantes Diverses</span>
+                        <span class="text-sm sm:text-base">Plantes diverses</span>
                     </a>
                 </div>
             </div>
@@ -63,7 +65,7 @@
                     </div>
                     <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Aucune plante disponible</h3>
                     <p class="text-base sm:text-lg text-gray-600 mb-8">Revenez bientôt pour découvrir nos nouvelles plantes</p>
-                    <a href="{{ route('plantes.catalogue') }}" class="inline-flex items-center px-6 py-3 bg-olive text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300">
+                    <a href="{{ route('plantes.catalogue') }}" class="inline-flex items-center px-6 py-3 bg-black text-white font-semibold rounded-full hover:bg-green-800 transition-all duration-300">
                         Voir toutes les plantes
                     </a>
                 </div>
@@ -88,16 +90,16 @@
                             <!-- Informations produit -->
                             <div class="p-5 sm:p-6 space-y-3">
                                 <!-- Nom du produit -->
-                                <h3 class="text-lg sm:text-xl font-bold text-gray-900 leading-tight group-hover:text-olive transition-colors duration-300">
+                                <h3 class="text-lg sm:text-xl font-bold text-black leading-tight font-sans">
                                     {{ $plante->nom_commun }}
                                 </h3>
 
                                 <!-- Prix et CTA -->
                                 <div class="flex items-center justify-between">
-                                    <p class="text-xl sm:text-2xl font-bold text-olive">
+                                    <p class="text-xl sm:text-2xl text-black">
                                         {{ number_format($plante->prix, 2, ',', ' ') }} €
                                     </p>
-                                    <div class="flex items-center text-gray-500 group-hover:text-olive transition-colors duration-300">
+                                    <div class="flex items-center text-gray-500">
                                         <span class="text-sm font-medium mr-1">Voir</span>
                                         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

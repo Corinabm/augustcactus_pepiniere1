@@ -24,7 +24,7 @@ class PlantePhotoForm
                     ->disk('public')
                     ->directory('plantes/photos')
                     ->required()
-                    ->maxSize(2048)
+                    ->maxSize(5120)
                     ->columnSpanFull(),
                 Toggle::make('est_principale')
                     ->default(false),

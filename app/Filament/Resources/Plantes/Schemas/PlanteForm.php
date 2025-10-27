@@ -58,7 +58,7 @@ class PlanteForm
                             ->image()
                             ->directory('plantes/photos')
                             ->disk('public')
-                            ->maxSize(2048)
+                            ->maxSize(5120)
                             ->required(),
                         Toggle::make('est_principale')
                             ->label('Photo principale')

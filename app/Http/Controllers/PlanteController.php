@@ -27,6 +27,7 @@ class PlanteController extends Controller
 
             // Mapping des URLs vers les noms de catégories en base de données
             $categorieMapping = [
+                'plante-du-mois' => 'Plante du mois',
                 'cactus' => 'Cactus',
                 'succulentes' => 'Succulentes',
                 'diverses' => 'Plantes Diverses'
@@ -34,6 +35,10 @@ class PlanteController extends Controller
 
             // Titres et sous-titres personnalisés par catégorie
             $contenuMapping = [
+                'plante-du-mois' => [
+                    'titre' => 'Plante du mois',
+                    'sousTitre' => 'Découvrez notre sélection du mois, une plante d\'exception choisie spécialement pour vous.'
+                ],
                 'cactus' => [
                     'titre' => 'Nos Cactus',
                     'sousTitre' => 'Découvrez notre collection de cactus, des plantes résistantes et fascinantes qui apportent une touche unique à votre intérieur.'
