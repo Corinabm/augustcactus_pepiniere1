@@ -11,7 +11,7 @@
     <section class="relative bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-olive mb-6 sm:mb-8 leading-tight">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 sm:mb-8 leading-tight">
                     Notre Galerie
                 </h1>
                 <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
