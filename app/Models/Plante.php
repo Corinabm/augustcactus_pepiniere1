@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Demande;
 use App\Models\Categorie;
 use App\Models\PlantePhoto;
 use Illuminate\Database\Eloquent\Model;
@@ -33,15 +32,7 @@ class Plante extends Model
      */
     public function categorie()
     {
-        return $this->belongsTo(Categorie::class); 
-    }
-
-    /**
-     * Relation : Une plante a plusieurs demandes
-     */
-    public function demandes()
-    {
-        return $this->hasMany(Demande::class); 
+        return $this->belongsTo(Categorie::class);
     }
 
     /**

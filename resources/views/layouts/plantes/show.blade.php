@@ -116,7 +116,7 @@
 
                     <!-- Prix -->
                     <div class="flex items-baseline gap-3">
-                        <span class="font-bold text-olive text-4xl sm:text-5xl">
+                        <span class="font-bold text-gray-900 text-4xl sm:text-5xl">
                             {{ number_format($plante->prix, 2, ',', ' ') }} €
                         </span>
                         @if($plante->stock > 0)
@@ -378,7 +378,7 @@
 
             <!-- Section "Vous aimeriez aussi" moderne -->
             <div class="pt-16 lg:pt-24">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-olive mb-8 sm:mb-12">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 sm:mb-12">
                     Vous aimeriez aussi
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -400,13 +400,13 @@
                             <!-- Informations produit -->
                             <div class="p-4 sm:p-5 space-y-2 sm:space-y-3">
                                 <!-- Nom du produit -->
-                                <h3 class="text-base sm:text-lg font-bold text-gray-900 leading-tight group-hover:text-olive transition-colors duration-300 line-clamp-2">
+                                <h3 class="text-base sm:text-lg font-bold text-gray-900 leading-tight line-clamp-2">
                                     {{ $planteLiee->nom_commun }}
                                 </h3>
 
                                 <!-- Prix et CTA -->
                                 <div class="flex items-center justify-between">
-                                    <p class="text-lg sm:text-xl font-bold text-olive">
+                                    <p class="text-lg sm:text-xl font-bold text-gray-900">
                                         {{ number_format($planteLiee->prix, 2, ',', ' ') }} €
                                     </p>
                                     <div class="flex items-center text-gray-500 group-hover:text-olive transition-colors duration-300">

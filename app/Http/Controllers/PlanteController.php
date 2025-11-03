@@ -10,9 +10,9 @@ class PlanteController extends Controller
     /**
      * Afficher la liste des plantes actives avec filtres
      */
-    public function catalogue(Request $request)
+    public function index(Request $request)
     {
-        // Requête de base : plantes actives avec leur catégorie
+        // Récuperer les plantes actives avec leur catégorie
         $query = Plante::where('est_actif', true)
                        ->with('categorie');
 
@@ -85,6 +85,7 @@ class PlanteController extends Controller
      */
     public function show(Plante $plante)
     {
+        // Charge la catégorie et les photos de la plante
         $plante->load(['categorie', 'photos']);
 
         // Récupérer 4 plantes de la même catégorie (excluant la plante actuelle)

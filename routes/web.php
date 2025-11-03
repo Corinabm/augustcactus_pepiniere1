@@ -17,5 +17,5 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'submitContact'])->name('contact.submit');
 
 // Routes PlanteController
-Route::get('/nos-plantes', [PlanteController::class, 'catalogue'])->name('plantes.catalogue');
+Route::get('/nos-plantes', [PlanteController::class, 'index'])->name('plantes.catalogue');
 Route::get('/nos-plantes/{plante}', [PlanteController::class, 'show'])->name('plantes.show');
